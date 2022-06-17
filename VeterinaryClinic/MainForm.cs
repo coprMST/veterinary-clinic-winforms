@@ -13,6 +13,8 @@ namespace VeterinaryClinic
     public partial class MainForm : Form
     {
         private readonly Color _borderColor = Color.FromArgb(21, 94, 117);
+        private int _x;
+        private int _y;
 
         public MainForm()
         {
@@ -64,6 +66,17 @@ namespace VeterinaryClinic
         private void GoToMinimizedApp_Click(object sender, EventArgs e)
         {
             WindowState = FormWindowState.Minimized;
+        }
+
+        private void headerPanel_MouseDown(object sender, MouseEventArgs e)
+        {
+            _x = e.X; _y = e.Y;
+        }
+
+        private void headerPanel_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+                Location = new Point(Location.X + (e.X - _x), Location.Y + (e.Y - _y));
         }
     }
 }
