@@ -13,7 +13,7 @@ namespace VeterinaryClinic
         internal static string CustomerId { get; set; }
         internal static string UserName { get; set; }
 
-        internal static void AutoAuthUser()
+        internal static bool AutoAuthUser()
         {
             var login = Empty;
             var password = Empty;
@@ -39,10 +39,10 @@ namespace VeterinaryClinic
                 }
                 catch
                 {
-                    return;
+                    return false;
                 }
 
-                return;
+                return false;
             }
 
             if (Regex.IsMatch(login, ".+[@].+[.].+"))
@@ -57,7 +57,7 @@ namespace VeterinaryClinic
             if (result.HasError || result.HasZeroRows)
             {
                 File.Delete(@"temp");
-                return;
+                return false;
             }
 
             switch (result.ResultData.Rows[0][5].ToString())
@@ -71,10 +71,7 @@ namespace VeterinaryClinic
             if (result.ResultData.Rows[0][4] != DBNull.Value)
                 UserName += result.ResultData.Rows[0][4].ToString().Substring(0, 1) + ".";
 
-            Program.MainFormLink.goToAuth.Visible = false;
-            Program.MainFormLink.goToReg.Visible = false;
-            Program.MainFormLink.goToLogOut.Visible = true;
-            Program.MainFormLink.myNameLabel.Text = UserName;
+            return true;
         }
         
         internal static void CreateUserFile(string login, string password)

@@ -77,6 +77,7 @@ namespace VeterinaryClinic.MiniForms
             this.ClientSize = new System.Drawing.Size(289, 425);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "EditPosition";
             this.ShowInTaskbar = false;
             this.Text = "EditPosition";

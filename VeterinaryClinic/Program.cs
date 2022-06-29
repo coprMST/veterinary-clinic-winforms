@@ -5,7 +5,7 @@ namespace VeterinaryClinic
 {
     internal static class Program
     {
-        public static MainForm MainFormLink;
+        internal static MainForm MainFormLink;
 
         /// <summary>
         /// Главная точка входа для приложения.

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Drawing;
-using System.IO;
 using System.Windows.Forms;
 using VeterinaryClinic.Forms;
+using VeterinaryClinic.MiniForms;
 
 namespace VeterinaryClinic
 {
@@ -18,17 +18,7 @@ namespace VeterinaryClinic
         internal MainForm()
         {
             Program.MainFormLink = this;
-            AppUser.AutoAuthUser();
-
             InitializeComponent();
-
-            if (AppUser.AccountId != null)
-            {
-                goToAuth.Visible = false;
-                goToReg.Visible = false;
-                goToLogOut.Visible = true;
-                myNameLabel.Text = AppUser.UserName;
-            }
 
             _oldLoc = Location;
             _oldSize = Size;
@@ -55,6 +45,22 @@ namespace VeterinaryClinic
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            if (AppUser.AutoAuthUser())
+            {
+                goToAuth.Visible = false;
+                goToReg.Visible = false;
+                goToLogOut.Visible = true;
+                guna2Panel1.Visible = true;
+                myNameLabel.Text = AppUser.UserName;
+            }
+            else
+            {
+                goToAuth.Visible = true;
+                goToReg.Visible = true;
+                goToLogOut.Visible = false;
+                guna2Panel1.Visible = false;
+            }
+
             goHeadPage.Checked = true;
             Text = "Петан - Главная";
             OpenChildForm(new HeadForm());
@@ -75,15 +81,14 @@ namespace VeterinaryClinic
         private void GoToAuth_Click(object sender, EventArgs e)
         {
             Text = "Петан - Авторизация";
-            OpenChildForm(new AuthForm());
+            var mainForm = this;
+            OpenMiniForm.Shading(ref mainForm, new AuthForm());
         }
 
         private void GoDataPage_Click(object sender, EventArgs e)
         {
             Text = "Петан - Данные";
             OpenChildForm(new ServicesForm());
-            //var mainForm = this;
-            //OpenMiniForm.Shading(ref mainForm, new EditPosition());
         }
 
         private void MenuPanel_Paint(object sender, PaintEventArgs e)
@@ -143,6 +148,10 @@ namespace VeterinaryClinic
 
         private void goToLogOut_Click(object sender, EventArgs e)
         {
+            goToAuth.Visible = true;
+            goToReg.Visible = true;
+            goToLogOut.Visible = false;
+            guna2Panel1.Visible = false;
             AppUser.DeleteUserFile();
         }
 

@@ -139,9 +139,11 @@ namespace VeterinaryClinic
             // myNameLabel
             // 
             this.myNameLabel.AutoSize = true;
-            this.myNameLabel.Location = new System.Drawing.Point(66, 23);
+            this.myNameLabel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
+            this.myNameLabel.ForeColor = System.Drawing.Color.White;
+            this.myNameLabel.Location = new System.Drawing.Point(43, 19);
             this.myNameLabel.Name = "myNameLabel";
-            this.myNameLabel.Size = new System.Drawing.Size(35, 13);
+            this.myNameLabel.Size = new System.Drawing.Size(54, 19);
             this.myNameLabel.TabIndex = 0;
             this.myNameLabel.Text = "label1";
             // 
@@ -460,10 +462,10 @@ namespace VeterinaryClinic
         internal Guna.UI2.WinForms.Guna2Button guna2Button2;
         internal Guna.UI2.WinForms.Guna2Button goToLogOut;
         internal Guna.UI2.WinForms.Guna2Panel guna2Panel1;
-        internal Guna.UI2.WinForms.Guna2Button goToAuth;
         internal Guna.UI2.WinForms.Guna2Button goToReg;
         internal Guna.UI2.WinForms.Guna2Button goToSettings;
         internal System.Windows.Forms.Label myNameLabel;
+        internal Guna.UI2.WinForms.Guna2Button goToAuth;
     }
 }
 

@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.String;
 
-namespace VeterinaryClinic.Forms
+namespace VeterinaryClinic.MiniForms
 {
     internal partial class AuthForm : Form
     {
@@ -13,7 +13,7 @@ namespace VeterinaryClinic.Forms
             InitializeComponent();
         }
 
-        private async void passwordTextBox_IconRightClick(object sender, EventArgs e)
+        private async void PasswordTextBox_IconRightClick(object sender, EventArgs e)
         {
             passwordTextBox.PasswordChar = '\0';
             await Task.Delay(2000);
@@ -138,10 +138,16 @@ namespace VeterinaryClinic.Forms
                 Program.MainFormLink.goToAuth.Visible = false;
                 Program.MainFormLink.goToReg.Visible = false;
                 Program.MainFormLink.goToLogOut.Visible = true;
+                Program.MainFormLink.guna2Panel1.Visible = true;
                 Program.MainFormLink.myNameLabel.Text = AppUser.UserName;
             }));
 
             return Task.CompletedTask;
+        }
+
+        private void GoToCloseForm_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
