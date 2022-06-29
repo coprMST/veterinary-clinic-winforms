@@ -42,6 +42,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.goToCloseForm = new Guna.UI2.WinForms.Guna2Button();
+            this.helperButton = new Guna.UI2.WinForms.Guna2ImageButton();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,6 +57,7 @@
             // 
             // goToLogIn
             // 
+            this.goToLogIn.Animated = true;
             this.goToLogIn.AutoRoundedCorners = true;
             this.goToLogIn.BorderColor = System.Drawing.Color.Transparent;
             this.goToLogIn.BorderRadius = 21;
@@ -253,12 +255,31 @@
             this.goToCloseForm.TabIndex = 24;
             this.goToCloseForm.Click += new System.EventHandler(this.GoToCloseForm_Click);
             // 
+            // helperButton
+            // 
+            this.helperButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.helperButton.BackColor = System.Drawing.Color.Transparent;
+            this.helperButton.CheckedState.ImageSize = new System.Drawing.Size(42, 42);
+            this.helperButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.helperButton.HoverState.ImageSize = new System.Drawing.Size(42, 42);
+            this.helperButton.Image = ((System.Drawing.Image)(resources.GetObject("helperButton.Image")));
+            this.helperButton.ImageOffset = new System.Drawing.Point(0, 0);
+            this.helperButton.ImageRotate = 0F;
+            this.helperButton.ImageSize = new System.Drawing.Size(48, 48);
+            this.helperButton.Location = new System.Drawing.Point(433, 482);
+            this.helperButton.Margin = new System.Windows.Forms.Padding(0);
+            this.helperButton.Name = "helperButton";
+            this.helperButton.PressedState.ImageSize = new System.Drawing.Size(42, 42);
+            this.helperButton.Size = new System.Drawing.Size(60, 60);
+            this.helperButton.TabIndex = 103;
+            // 
             // AuthForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(244)))), ((int)(((byte)(246)))));
             this.ClientSize = new System.Drawing.Size(493, 542);
+            this.Controls.Add(this.helperButton);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.goToLogIn);
             this.Controls.Add(this.label1);
@@ -270,6 +291,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AuthForm";
+            this.ShowInTaskbar = false;
             this.Text = "AuthForm";
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -291,5 +313,6 @@
         private Guna.UI2.WinForms.Guna2CustomCheckBox MainCheckBox;
         private System.Windows.Forms.Panel panel1;
         private Guna.UI2.WinForms.Guna2Button goToCloseForm;
+        private Guna.UI2.WinForms.Guna2ImageButton helperButton;
     }
 }

@@ -86,6 +86,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data.cs" />
+    <Compile Include="Forms\ServicesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ServicesForm.Designer.cs">
+      <DependentUpon>ServicesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Helper.cs" />
     <Compile Include="MiniForms\AuthForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,16 +117,25 @@
     <Compile Include="MiniForms\EditPositionForm.Designer.cs">
       <DependentUpon>EditPositionForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="MiniForms\SettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MiniForms\SettingsForm.Designer.cs">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="OpenMiniForm.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Forms\ServicesForm.cs">
+    <Compile Include="Forms\DataForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\ServicesForm.Designer.cs">
-      <DependentUpon>ServicesForm.cs</DependentUpon>
+    <Compile Include="Forms\DataForm.Designer.cs">
+      <DependentUpon>DataForm.cs</DependentUpon>
     </Compile>
     <Compile Include="AppUser.cs" />
+    <EmbeddedResource Include="Forms\ServicesForm.resx">
+      <DependentUpon>ServicesForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MiniForms\AuthForm.resx">
       <DependentUpon>AuthForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -132,6 +148,9 @@
     <EmbeddedResource Include="MiniForms\EditPositionForm.resx">
       <DependentUpon>EditPositionForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MiniForms\SettingsForm.resx">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -141,8 +160,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Forms\ServicesForm.resx">
-      <DependentUpon>ServicesForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\DataForm.resx">
+      <DependentUpon>DataForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\app.manifest" />

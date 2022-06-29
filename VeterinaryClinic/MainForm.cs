@@ -47,18 +47,18 @@ namespace VeterinaryClinic
         {
             if (AppUser.AutoAuthUser())
             {
-                goToAuth.Visible = false;
-                goToReg.Visible = false;
+                goToAuthPage.Visible = false;
+                goToRegPage.Visible = false;
                 goToLogOut.Visible = true;
-                guna2Panel1.Visible = true;
+                userPanel.Visible = true;
                 myNameLabel.Text = AppUser.UserName;
             }
             else
             {
-                goToAuth.Visible = true;
-                goToReg.Visible = true;
+                goToAuthPage.Visible = true;
+                goToRegPage.Visible = true;
                 goToLogOut.Visible = false;
-                guna2Panel1.Visible = false;
+                userPanel.Visible = false;
             }
 
             goHeadPage.Checked = true;
@@ -69,13 +69,8 @@ namespace VeterinaryClinic
         private void goToSettings_Click(object sender, EventArgs e)
         {
             Text = "Петан - Настройки";
-            OpenChildForm(new HeadForm());
-        }
-
-        private void GoHeadPage_Click(object sender, EventArgs e)
-        {
-            Text = "Петан - Главная";
-            OpenChildForm(new HeadForm());
+            var mainForm = this;
+            OpenMiniForm.Shading(ref mainForm, new SettingsForm());
         }
 
         private void GoToAuth_Click(object sender, EventArgs e)
@@ -85,10 +80,22 @@ namespace VeterinaryClinic
             OpenMiniForm.Shading(ref mainForm, new AuthForm());
         }
 
+        private void goToSerivcesPage_Click(object sender, EventArgs e)
+        {
+            Text = "Петан - Услуги";
+            OpenChildForm(new ServicesForm());
+        }
+
+        private void GoHeadPage_Click(object sender, EventArgs e)
+        {
+            Text = "Петан - Главная";
+            OpenChildForm(new HeadForm());
+        }
+
         private void GoDataPage_Click(object sender, EventArgs e)
         {
             Text = "Петан - Данные";
-            OpenChildForm(new ServicesForm());
+            OpenChildForm(new DataForm());
         }
 
         private void MenuPanel_Paint(object sender, PaintEventArgs e)
@@ -148,10 +155,10 @@ namespace VeterinaryClinic
 
         private void goToLogOut_Click(object sender, EventArgs e)
         {
-            goToAuth.Visible = true;
-            goToReg.Visible = true;
+            goToAuthPage.Visible = true;
+            goToRegPage.Visible = true;
             goToLogOut.Visible = false;
-            guna2Panel1.Visible = false;
+            userPanel.Visible = false;
             AppUser.DeleteUserFile();
         }
 

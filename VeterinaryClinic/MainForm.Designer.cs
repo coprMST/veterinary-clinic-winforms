@@ -31,14 +31,16 @@ namespace VeterinaryClinic
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.menuPanel = new Guna.UI2.WinForms.Guna2Panel();
-            this.goToSettings = new Guna.UI2.WinForms.Guna2Button();
+            this.goToSettingsPage = new Guna.UI2.WinForms.Guna2Button();
             this.goToLogOut = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.userPanel = new Guna.UI2.WinForms.Guna2Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.guna2CirclePictureBox1 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             this.myNameLabel = new System.Windows.Forms.Label();
-            this.goToAuth = new Guna.UI2.WinForms.Guna2Button();
-            this.goToReg = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
+            this.goToAuthPage = new Guna.UI2.WinForms.Guna2Button();
+            this.goToRegPage = new Guna.UI2.WinForms.Guna2Button();
+            this.goToProfilePage = new Guna.UI2.WinForms.Guna2Button();
+            this.goToSerivcesPage = new Guna.UI2.WinForms.Guna2Button();
             this.goDataPage = new Guna.UI2.WinForms.Guna2Button();
             this.goHeadPage = new Guna.UI2.WinForms.Guna2Button();
             this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
@@ -50,7 +52,8 @@ namespace VeterinaryClinic
             this.goToCloseApp = new Guna.UI2.WinForms.Guna2Button();
             this.mainToolTip = new Guna.UI2.WinForms.Guna2HtmlToolTip();
             this.menuPanel.SuspendLayout();
-            this.guna2Panel1.SuspendLayout();
+            this.userPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             this.formPanel.SuspendLayout();
             this.headerPanel.SuspendLayout();
@@ -59,13 +62,13 @@ namespace VeterinaryClinic
             // menuPanel
             // 
             this.menuPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(116)))), ((int)(((byte)(144)))));
-            this.menuPanel.Controls.Add(this.goToSettings);
+            this.menuPanel.Controls.Add(this.goToSettingsPage);
             this.menuPanel.Controls.Add(this.goToLogOut);
-            this.menuPanel.Controls.Add(this.guna2Panel1);
-            this.menuPanel.Controls.Add(this.goToAuth);
-            this.menuPanel.Controls.Add(this.goToReg);
-            this.menuPanel.Controls.Add(this.guna2Button1);
-            this.menuPanel.Controls.Add(this.guna2Button2);
+            this.menuPanel.Controls.Add(this.userPanel);
+            this.menuPanel.Controls.Add(this.goToAuthPage);
+            this.menuPanel.Controls.Add(this.goToRegPage);
+            this.menuPanel.Controls.Add(this.goToProfilePage);
+            this.menuPanel.Controls.Add(this.goToSerivcesPage);
             this.menuPanel.Controls.Add(this.goDataPage);
             this.menuPanel.Controls.Add(this.goHeadPage);
             this.menuPanel.Controls.Add(this.guna2PictureBox1);
@@ -77,35 +80,31 @@ namespace VeterinaryClinic
             this.menuPanel.TabIndex = 1;
             this.menuPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.MenuPanel_Paint);
             // 
-            // goToSettings
+            // goToSettingsPage
             // 
-            this.goToSettings.Animated = true;
-            this.goToSettings.BorderRadius = 12;
-            this.goToSettings.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
-            this.goToSettings.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(94)))), ((int)(((byte)(117)))));
-            this.goToSettings.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.goToSettings.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.goToSettings.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.goToSettings.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.goToSettings.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.goToSettings.FillColor = System.Drawing.Color.Transparent;
-            this.goToSettings.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
-            this.goToSettings.ForeColor = System.Drawing.Color.White;
-            this.goToSettings.ImageOffset = new System.Drawing.Point(-10, 0);
-            this.goToSettings.Location = new System.Drawing.Point(12, 493);
-            this.goToSettings.Name = "goToSettings";
-            this.goToSettings.Size = new System.Drawing.Size(196, 45);
-            this.goToSettings.TabIndex = 36;
-            this.goToSettings.Text = "Настройки";
-            this.goToSettings.TextOffset = new System.Drawing.Point(0, -1);
-            this.mainToolTip.SetToolTip(this.goToSettings, "Переход на страницу настройек");
-            this.goToSettings.Click += new System.EventHandler(this.goToSettings_Click);
+            this.goToSettingsPage.BorderRadius = 12;
+            this.goToSettingsPage.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(94)))), ((int)(((byte)(117)))));
+            this.goToSettingsPage.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.goToSettingsPage.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.goToSettingsPage.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.goToSettingsPage.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.goToSettingsPage.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.goToSettingsPage.FillColor = System.Drawing.Color.Transparent;
+            this.goToSettingsPage.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
+            this.goToSettingsPage.ForeColor = System.Drawing.Color.White;
+            this.goToSettingsPage.ImageOffset = new System.Drawing.Point(-10, 0);
+            this.goToSettingsPage.Location = new System.Drawing.Point(12, 493);
+            this.goToSettingsPage.Name = "goToSettingsPage";
+            this.goToSettingsPage.Size = new System.Drawing.Size(196, 45);
+            this.goToSettingsPage.TabIndex = 36;
+            this.goToSettingsPage.Text = "Настройки";
+            this.goToSettingsPage.TextOffset = new System.Drawing.Point(0, -1);
+            this.mainToolTip.SetToolTip(this.goToSettingsPage, "Переход на страницу настройек");
+            this.goToSettingsPage.Click += new System.EventHandler(this.goToSettings_Click);
             // 
             // goToLogOut
             // 
-            this.goToLogOut.Animated = true;
             this.goToLogOut.BorderRadius = 12;
-            this.goToLogOut.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
             this.goToLogOut.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(94)))), ((int)(((byte)(117)))));
             this.goToLogOut.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.goToLogOut.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
@@ -126,117 +125,139 @@ namespace VeterinaryClinic
             this.goToLogOut.Visible = false;
             this.goToLogOut.Click += new System.EventHandler(this.goToLogOut_Click);
             // 
-            // guna2Panel1
+            // userPanel
             // 
-            this.guna2Panel1.Controls.Add(this.myNameLabel);
-            this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.guna2Panel1.Location = new System.Drawing.Point(12, 583);
-            this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(196, 83);
-            this.guna2Panel1.TabIndex = 34;
-            this.guna2Panel1.Visible = false;
+            this.userPanel.Controls.Add(this.label1);
+            this.userPanel.Controls.Add(this.guna2CirclePictureBox1);
+            this.userPanel.Controls.Add(this.myNameLabel);
+            this.userPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.userPanel.Location = new System.Drawing.Point(12, 583);
+            this.userPanel.Name = "userPanel";
+            this.userPanel.Size = new System.Drawing.Size(196, 83);
+            this.userPanel.TabIndex = 34;
+            this.userPanel.Visible = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(44, 19);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(125, 19);
+            this.label1.TabIndex = 38;
+            this.label1.Text = "Здравствуйте,";
+            // 
+            // guna2CirclePictureBox1
+            // 
+            this.guna2CirclePictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("guna2CirclePictureBox1.Image")));
+            this.guna2CirclePictureBox1.ImageRotate = 0F;
+            this.guna2CirclePictureBox1.Location = new System.Drawing.Point(3, 18);
+            this.guna2CirclePictureBox1.Name = "guna2CirclePictureBox1";
+            this.guna2CirclePictureBox1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.guna2CirclePictureBox1.Size = new System.Drawing.Size(40, 40);
+            this.guna2CirclePictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.guna2CirclePictureBox1.TabIndex = 37;
+            this.guna2CirclePictureBox1.TabStop = false;
             // 
             // myNameLabel
             // 
             this.myNameLabel.AutoSize = true;
             this.myNameLabel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
             this.myNameLabel.ForeColor = System.Drawing.Color.White;
-            this.myNameLabel.Location = new System.Drawing.Point(43, 19);
+            this.myNameLabel.Location = new System.Drawing.Point(44, 38);
             this.myNameLabel.Name = "myNameLabel";
-            this.myNameLabel.Size = new System.Drawing.Size(54, 19);
+            this.myNameLabel.Size = new System.Drawing.Size(118, 19);
             this.myNameLabel.TabIndex = 0;
-            this.myNameLabel.Text = "label1";
+            this.myNameLabel.Text = "myNameLabel";
             // 
-            // goToAuth
+            // goToAuthPage
             // 
-            this.goToAuth.Animated = true;
-            this.goToAuth.BorderRadius = 12;
-            this.goToAuth.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
-            this.goToAuth.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(94)))), ((int)(((byte)(117)))));
-            this.goToAuth.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.goToAuth.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.goToAuth.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.goToAuth.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.goToAuth.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.goToAuth.FillColor = System.Drawing.Color.Transparent;
-            this.goToAuth.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
-            this.goToAuth.ForeColor = System.Drawing.Color.White;
-            this.goToAuth.ImageOffset = new System.Drawing.Point(-10, 0);
-            this.goToAuth.Location = new System.Drawing.Point(12, 666);
-            this.goToAuth.Name = "goToAuth";
-            this.goToAuth.Size = new System.Drawing.Size(196, 45);
-            this.goToAuth.TabIndex = 33;
-            this.goToAuth.Text = "Авторизоваться";
-            this.goToAuth.TextOffset = new System.Drawing.Point(0, -1);
-            this.mainToolTip.SetToolTip(this.goToAuth, "Переход на авторизацию в системе");
-            this.goToAuth.Click += new System.EventHandler(this.GoToAuth_Click);
+            this.goToAuthPage.BorderRadius = 12;
+            this.goToAuthPage.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(94)))), ((int)(((byte)(117)))));
+            this.goToAuthPage.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.goToAuthPage.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.goToAuthPage.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.goToAuthPage.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.goToAuthPage.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.goToAuthPage.FillColor = System.Drawing.Color.Transparent;
+            this.goToAuthPage.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
+            this.goToAuthPage.ForeColor = System.Drawing.Color.White;
+            this.goToAuthPage.ImageOffset = new System.Drawing.Point(-10, 0);
+            this.goToAuthPage.Location = new System.Drawing.Point(12, 666);
+            this.goToAuthPage.Name = "goToAuthPage";
+            this.goToAuthPage.Size = new System.Drawing.Size(196, 45);
+            this.goToAuthPage.TabIndex = 33;
+            this.goToAuthPage.Text = "Авторизоваться";
+            this.goToAuthPage.TextOffset = new System.Drawing.Point(0, -1);
+            this.mainToolTip.SetToolTip(this.goToAuthPage, "Переход на авторизацию в системе");
+            this.goToAuthPage.Click += new System.EventHandler(this.GoToAuth_Click);
             // 
-            // goToReg
+            // goToRegPage
             // 
-            this.goToReg.Animated = true;
-            this.goToReg.BorderRadius = 12;
-            this.goToReg.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
-            this.goToReg.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(94)))), ((int)(((byte)(117)))));
-            this.goToReg.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.goToReg.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.goToReg.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.goToReg.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.goToReg.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.goToReg.FillColor = System.Drawing.Color.Transparent;
-            this.goToReg.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
-            this.goToReg.ForeColor = System.Drawing.Color.White;
-            this.goToReg.ImageOffset = new System.Drawing.Point(-10, 0);
-            this.goToReg.Location = new System.Drawing.Point(12, 711);
-            this.goToReg.Name = "goToReg";
-            this.goToReg.Size = new System.Drawing.Size(196, 45);
-            this.goToReg.TabIndex = 32;
-            this.goToReg.Text = "Регистрация";
-            this.goToReg.TextOffset = new System.Drawing.Point(0, -1);
-            this.mainToolTip.SetToolTip(this.goToReg, "Переход на регистрацию в системе");
+            this.goToRegPage.BorderRadius = 12;
+            this.goToRegPage.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(94)))), ((int)(((byte)(117)))));
+            this.goToRegPage.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.goToRegPage.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.goToRegPage.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.goToRegPage.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.goToRegPage.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.goToRegPage.FillColor = System.Drawing.Color.Transparent;
+            this.goToRegPage.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
+            this.goToRegPage.ForeColor = System.Drawing.Color.White;
+            this.goToRegPage.ImageOffset = new System.Drawing.Point(-10, 0);
+            this.goToRegPage.Location = new System.Drawing.Point(12, 711);
+            this.goToRegPage.Name = "goToRegPage";
+            this.goToRegPage.Size = new System.Drawing.Size(196, 45);
+            this.goToRegPage.TabIndex = 32;
+            this.goToRegPage.Text = "Регистрация";
+            this.goToRegPage.TextOffset = new System.Drawing.Point(0, -1);
+            this.mainToolTip.SetToolTip(this.goToRegPage, "Переход на регистрацию в системе");
             // 
-            // guna2Button1
+            // goToProfilePage
             // 
-            this.guna2Button1.Animated = true;
-            this.guna2Button1.BorderRadius = 12;
-            this.guna2Button1.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
-            this.guna2Button1.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(94)))), ((int)(((byte)(117)))));
-            this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.guna2Button1.FillColor = System.Drawing.Color.Transparent;
-            this.guna2Button1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
-            this.guna2Button1.ForeColor = System.Drawing.Color.White;
-            this.guna2Button1.ImageOffset = new System.Drawing.Point(-10, 0);
-            this.guna2Button1.ImageSize = new System.Drawing.Size(25, 25);
-            this.guna2Button1.Location = new System.Drawing.Point(12, 261);
-            this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.Size = new System.Drawing.Size(196, 45);
-            this.guna2Button1.TabIndex = 28;
-            this.guna2Button1.Text = "Профиль";
-            this.mainToolTip.SetToolTip(this.guna2Button1, "Переход на страницу своего профиля");
+            this.goToProfilePage.Animated = true;
+            this.goToProfilePage.BorderRadius = 12;
+            this.goToProfilePage.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
+            this.goToProfilePage.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(94)))), ((int)(((byte)(117)))));
+            this.goToProfilePage.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.goToProfilePage.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.goToProfilePage.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.goToProfilePage.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.goToProfilePage.Dock = System.Windows.Forms.DockStyle.Top;
+            this.goToProfilePage.FillColor = System.Drawing.Color.Transparent;
+            this.goToProfilePage.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
+            this.goToProfilePage.ForeColor = System.Drawing.Color.White;
+            this.goToProfilePage.ImageOffset = new System.Drawing.Point(-10, 0);
+            this.goToProfilePage.ImageSize = new System.Drawing.Size(25, 25);
+            this.goToProfilePage.Location = new System.Drawing.Point(12, 261);
+            this.goToProfilePage.Name = "goToProfilePage";
+            this.goToProfilePage.Size = new System.Drawing.Size(196, 45);
+            this.goToProfilePage.TabIndex = 28;
+            this.goToProfilePage.Text = "Профиль";
+            this.mainToolTip.SetToolTip(this.goToProfilePage, "Переход на страницу своего профиля");
             // 
-            // guna2Button2
+            // goToSerivcesPage
             // 
-            this.guna2Button2.Animated = true;
-            this.guna2Button2.BorderRadius = 12;
-            this.guna2Button2.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
-            this.guna2Button2.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(94)))), ((int)(((byte)(117)))));
-            this.guna2Button2.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button2.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button2.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button2.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.guna2Button2.FillColor = System.Drawing.Color.Transparent;
-            this.guna2Button2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
-            this.guna2Button2.ForeColor = System.Drawing.Color.White;
-            this.guna2Button2.Location = new System.Drawing.Point(12, 216);
-            this.guna2Button2.Name = "guna2Button2";
-            this.guna2Button2.Size = new System.Drawing.Size(196, 45);
-            this.guna2Button2.TabIndex = 27;
-            this.guna2Button2.Text = "Услуги";
-            this.mainToolTip.SetToolTip(this.guna2Button2, "Переход на страницу услуг");
+            this.goToSerivcesPage.Animated = true;
+            this.goToSerivcesPage.BorderRadius = 12;
+            this.goToSerivcesPage.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
+            this.goToSerivcesPage.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(94)))), ((int)(((byte)(117)))));
+            this.goToSerivcesPage.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.goToSerivcesPage.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.goToSerivcesPage.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.goToSerivcesPage.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.goToSerivcesPage.Dock = System.Windows.Forms.DockStyle.Top;
+            this.goToSerivcesPage.FillColor = System.Drawing.Color.Transparent;
+            this.goToSerivcesPage.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
+            this.goToSerivcesPage.ForeColor = System.Drawing.Color.White;
+            this.goToSerivcesPage.Location = new System.Drawing.Point(12, 216);
+            this.goToSerivcesPage.Name = "goToSerivcesPage";
+            this.goToSerivcesPage.Size = new System.Drawing.Size(196, 45);
+            this.goToSerivcesPage.TabIndex = 27;
+            this.goToSerivcesPage.Text = "Услуги";
+            this.mainToolTip.SetToolTip(this.goToSerivcesPage, "Переход на страницу услуг");
+            this.goToSerivcesPage.Click += new System.EventHandler(this.goToSerivcesPage_Click);
             // 
             // goDataPage
             // 
@@ -321,7 +342,7 @@ namespace VeterinaryClinic
             this.helperButton.ImageOffset = new System.Drawing.Point(0, 0);
             this.helperButton.ImageRotate = 0F;
             this.helperButton.ImageSize = new System.Drawing.Size(48, 48);
-            this.helperButton.Location = new System.Drawing.Point(945, 705);
+            this.helperButton.Location = new System.Drawing.Point(948, 708);
             this.helperButton.Name = "helperButton";
             this.helperButton.PressedState.ImageSize = new System.Drawing.Size(42, 42);
             this.helperButton.Size = new System.Drawing.Size(60, 60);
@@ -436,8 +457,9 @@ namespace VeterinaryClinic
             this.Text = "Петан - Главная";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.menuPanel.ResumeLayout(false);
-            this.guna2Panel1.ResumeLayout(false);
-            this.guna2Panel1.PerformLayout();
+            this.userPanel.ResumeLayout(false);
+            this.userPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
             this.formPanel.ResumeLayout(false);
             this.headerPanel.ResumeLayout(false);
@@ -458,14 +480,16 @@ namespace VeterinaryClinic
         private Guna.UI2.WinForms.Guna2ImageButton helperButton;
         internal Guna.UI2.WinForms.Guna2Button goHeadPage;
         internal Guna.UI2.WinForms.Guna2Button goDataPage;
-        internal Guna.UI2.WinForms.Guna2Button guna2Button1;
-        internal Guna.UI2.WinForms.Guna2Button guna2Button2;
+        internal Guna.UI2.WinForms.Guna2Button goToProfilePage;
+        internal Guna.UI2.WinForms.Guna2Button goToSerivcesPage;
         internal Guna.UI2.WinForms.Guna2Button goToLogOut;
-        internal Guna.UI2.WinForms.Guna2Panel guna2Panel1;
-        internal Guna.UI2.WinForms.Guna2Button goToReg;
-        internal Guna.UI2.WinForms.Guna2Button goToSettings;
+        internal Guna.UI2.WinForms.Guna2Panel userPanel;
+        internal Guna.UI2.WinForms.Guna2Button goToRegPage;
+        internal Guna.UI2.WinForms.Guna2Button goToSettingsPage;
         internal System.Windows.Forms.Label myNameLabel;
-        internal Guna.UI2.WinForms.Guna2Button goToAuth;
+        internal Guna.UI2.WinForms.Guna2Button goToAuthPage;
+        internal System.Windows.Forms.Label label1;
+        private Guna.UI2.WinForms.Guna2CirclePictureBox guna2CirclePictureBox1;
     }
 }
 

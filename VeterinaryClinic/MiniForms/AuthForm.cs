@@ -38,8 +38,8 @@ namespace VeterinaryClinic.MiniForms
         {
             var login = loginTextBox.Text.Trim();
             var password = passwordTextBox.Text.Trim();
-            Data.MyResultData result;
-            Data.MyResultData result2;
+            Data.Result result;
+            Data.Result result2;
 
             if (IsNullOrEmpty(login))
             {
@@ -54,35 +54,35 @@ namespace VeterinaryClinic.MiniForms
 
             if (Regex.IsMatch(login, ".+[@].+[.].+"))
             {
-                result = Data.SqlReturnDataTable($@"execute [dbo].[CheckPhoneAndEmail] null, '{login}'");
+                result = Data.ReturnDataTable($@"execute [dbo].[CheckPhoneAndEmail] null, '{login}'");
                 if (result.HasError)
                 {
                     myMessageBoxError.Show(result.ErrorText);
                     return Task.CompletedTask;
                 }
-                if (result.ResultData.Rows[0][0].ToString() == "0")
+                if (result.DataTable.Rows[0][0].ToString() == "0")
                 {
                     myMessageBoxError.Show("Аккаунта с данной электронной почтой не существует");
                     SetNullLogin();
                     return Task.CompletedTask;
                 }
-                result2 = Data.SqlReturnDataTable($@"execute [dbo].[Auth] null, '{login}', '{password}'");
+                result2 = Data.ReturnDataTable($@"execute [dbo].[Auth] null, '{login}', '{password}'");
             }
             else if (long.TryParse(login, out _))
             {
-                result = Data.SqlReturnDataTable($@"execute [dbo].[CheckPhoneAndEmail] '{login}', null");
+                result = Data.ReturnDataTable($@"execute [dbo].[CheckPhoneAndEmail] '{login}', null");
                 if (result.HasError)
                 {
                     myMessageBoxError.Show(result.ErrorText);
                     return Task.CompletedTask;
                 }
-                if (result.ResultData.Rows[0][0].ToString() == "0")
+                if (result.DataTable.Rows[0][0].ToString() == "0")
                 {
                     myMessageBoxError.Show("Аккаунта с данным номером телефона не существует");
                     SetNullLogin();
                     return Task.CompletedTask;
                 }
-                result2 = Data.SqlReturnDataTable($@"execute [dbo].[Auth] '{login}', null, '{password}'");
+                result2 = Data.ReturnDataTable($@"execute [dbo].[Auth] '{login}', null, '{password}'");
             }
             else
             {
@@ -103,16 +103,16 @@ namespace VeterinaryClinic.MiniForms
                 return Task.CompletedTask;
             }
 
-            switch (result2.ResultData.Rows[0][5].ToString())
+            switch (result2.DataTable.Rows[0][5].ToString())
             {
-                case "1": AppUser.CustomerId = result2.ResultData.Rows[0][5].ToString(); break;
-                case "2": AppUser.EmployeeId = result2.ResultData.Rows[0][5].ToString(); break;
+                case "1": AppUser.CustomerId = result2.DataTable.Rows[0][5].ToString(); break;
+                case "2": AppUser.EmployeeId = result2.DataTable.Rows[0][5].ToString(); break;
             }
 
-            AppUser.AccountId = result2.ResultData.Rows[0][0].ToString();
-            AppUser.UserName = result2.ResultData.Rows[0][2] + " " + result2.ResultData.Rows[0][3].ToString().Substring(0, 1) + ".";
-            if (result2.ResultData.Rows[0][4] != DBNull.Value)
-                AppUser.UserName += result2.ResultData.Rows[0][4].ToString().Substring(0, 1) + ".";
+            AppUser.AccountId = result2.DataTable.Rows[0][0].ToString();
+            AppUser.UserName = result2.DataTable.Rows[0][2] + " " + result2.DataTable.Rows[0][3].ToString().Substring(0, 1) + ".";
+            if (result2.DataTable.Rows[0][4] != DBNull.Value)
+                AppUser.UserName += result2.DataTable.Rows[0][4].ToString().Substring(0, 1) + ".";
             myMessageBoxGoodAuth.Show($"С успешной авторизацией, {AppUser.UserName}");
 
             void SetNullLogin()
@@ -135,11 +135,13 @@ namespace VeterinaryClinic.MiniForms
 
             goToLogIn.Invoke(new Action(() =>
             {
-                Program.MainFormLink.goToAuth.Visible = false;
-                Program.MainFormLink.goToReg.Visible = false;
+                Program.MainFormLink.goToAuthPage.Visible = false;
+                Program.MainFormLink.goToRegPage.Visible = false;
                 Program.MainFormLink.goToLogOut.Visible = true;
-                Program.MainFormLink.guna2Panel1.Visible = true;
+                Program.MainFormLink.userPanel.Visible = true;
                 Program.MainFormLink.myNameLabel.Text = AppUser.UserName;
+
+                Close();
             }));
 
             return Task.CompletedTask;

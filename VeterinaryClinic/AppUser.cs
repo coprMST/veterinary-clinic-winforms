@@ -17,7 +17,7 @@ namespace VeterinaryClinic
         {
             var login = Empty;
             var password = Empty;
-            var result = new Data.MyResultData();
+            var result = new Data.Result();
 
             try
             {
@@ -47,11 +47,11 @@ namespace VeterinaryClinic
 
             if (Regex.IsMatch(login, ".+[@].+[.].+"))
             {
-                result = Data.SqlReturnDataTable($@"execute [dbo].[Auth] null, '{login}', '{password}'");
+                result = Data.ReturnDataTable($@"execute [dbo].[Auth] null, '{login}', '{password}'");
             }
             else if (long.TryParse(login, out _))
             {
-                result = Data.SqlReturnDataTable($@"execute [dbo].[Auth] '{login}', null, '{password}'");
+                result = Data.ReturnDataTable($@"execute [dbo].[Auth] '{login}', null, '{password}'");
             }
 
             if (result.HasError || result.HasZeroRows)
@@ -60,16 +60,16 @@ namespace VeterinaryClinic
                 return false;
             }
 
-            switch (result.ResultData.Rows[0][5].ToString())
+            switch (result.DataTable.Rows[0][5].ToString())
             {
-                case "1": CustomerId = result.ResultData.Rows[0][5].ToString(); break;
-                case "2": EmployeeId = result.ResultData.Rows[0][5].ToString(); break;
+                case "1": CustomerId = result.DataTable.Rows[0][5].ToString(); break;
+                case "2": EmployeeId = result.DataTable.Rows[0][5].ToString(); break;
             }
 
-            AccountId = result.ResultData.Rows[0][0].ToString();
-            UserName = result.ResultData.Rows[0][2] + " " + result.ResultData.Rows[0][3].ToString().Substring(0, 1) + ".";
-            if (result.ResultData.Rows[0][4] != DBNull.Value)
-                UserName += result.ResultData.Rows[0][4].ToString().Substring(0, 1) + ".";
+            AccountId = result.DataTable.Rows[0][0].ToString();
+            UserName = result.DataTable.Rows[0][2] + " " + result.DataTable.Rows[0][3].ToString().Substring(0, 1) + ".";
+            if (result.DataTable.Rows[0][4] != DBNull.Value)
+                UserName += result.DataTable.Rows[0][4].ToString().Substring(0, 1) + ".";
 
             return true;
         }

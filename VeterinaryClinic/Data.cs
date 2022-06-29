@@ -12,14 +12,14 @@ namespace VeterinaryClinic
         /// <summary>
         /// Набор данных для подключения к базе данных
         /// </summary>
-        internal class ConnectionSettings
+        internal class Settings
         {
             /// <summary>
-            /// Хранит название подключаемого клиента к базе данных.
+            /// Возращает или присваивает имя сервера.
             /// </summary>
             internal static string DataSource = Environment.MachineName;
             /// <summary>
-            /// Хранит название базы данных при подключении.
+            /// Возращает или присваивает имя базы данных.
             /// </summary>
             internal static string InitialCatalog = "VeterinaryClinicDB";
         }
@@ -27,12 +27,12 @@ namespace VeterinaryClinic
         /// <summary>
         /// Возвращаемый набор данных.
         /// </summary>
-        internal class MyResultData
+        internal class Result
         {
             /// <summary>
             /// Возвращает результат запроса.
             /// </summary>
-            internal DataTable ResultData;
+            internal DataTable DataTable;
             /// <summary>
             /// Возвращает текст ошибки.
             /// </summary>
@@ -52,13 +52,13 @@ namespace VeterinaryClinic
         /// </summary>
         /// <param name="cmd">Запрос к базе данных</param>
         /// <returns>Возвращает набор строк в DataTable.</returns>
-        internal static MyResultData SqlReturnDataTable(string cmd)
+        internal static Result ReturnDataTable(string cmd)
         {
-            var result = new MyResultData();
+            var result = new Result();
 
             try
             {
-                var con = new SqlConnection($@"Data Source = {ConnectionSettings.DataSource};Initial catalog={ConnectionSettings.InitialCatalog};Integrated security=True");
+                var con = new SqlConnection($@"Data Source = {Settings.DataSource};Initial catalog={Settings.InitialCatalog};Integrated security=True");
                 var command = new SqlCommand(cmd, con);
 
                 con.Open();
@@ -66,7 +66,7 @@ namespace VeterinaryClinic
                 adapter.SelectCommand = command;
                 var dataSet = new DataSet();
                 adapter.Fill(dataSet);
-                result.ResultData = dataSet.Tables[0];
+                result.DataTable = dataSet.Tables[0];
                 con.Close();
 
                 if (dataSet.Tables[0].Rows.Count == 0)
