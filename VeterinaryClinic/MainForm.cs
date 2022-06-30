@@ -66,6 +66,12 @@ namespace VeterinaryClinic
             OpenChildForm(new HeadForm());
         }
 
+        private void goToCreateMeeting_Click(object sender, EventArgs e)
+        {
+            Text = "Петан - Запись";
+            OpenChildForm(new MeetingForm());
+        }
+
         private void goToSettings_Click(object sender, EventArgs e)
         {
             Text = "Петан - Настройки";

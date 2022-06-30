@@ -35,14 +35,14 @@
             this.loginTextBox = new Guna.UI2.WinForms.Guna2TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.MainCheckBox = new Guna.UI2.WinForms.Guna2CustomCheckBox();
+            this.goToCloseForm = new Guna.UI2.WinForms.Guna2Button();
+            this.helperButton = new Guna.UI2.WinForms.Guna2ImageButton();
             this.myMessageBoxGoodAuth = new Guna.UI2.WinForms.Guna2MessageDialog();
             this.myMessageBoxWarning = new Guna.UI2.WinForms.Guna2MessageDialog();
             this.myMessageBoxError = new Guna.UI2.WinForms.Guna2MessageDialog();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.goToCloseForm = new Guna.UI2.WinForms.Guna2Button();
-            this.helperButton = new Guna.UI2.WinForms.Guna2ImageButton();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -100,6 +100,7 @@
             this.passwordTextBox.IconRightSize = new System.Drawing.Size(26, 26);
             this.passwordTextBox.Location = new System.Drawing.Point(47, 233);
             this.passwordTextBox.Margin = new System.Windows.Forms.Padding(0);
+            this.passwordTextBox.MaxLength = 32;
             this.passwordTextBox.Name = "passwordTextBox";
             this.passwordTextBox.PasswordChar = '●';
             this.passwordTextBox.PlaceholderText = "●●●●●●●●●●●●";
@@ -109,6 +110,7 @@
             this.passwordTextBox.TextOffset = new System.Drawing.Point(4, 0);
             this.mainToolTip.SetToolTip(this.passwordTextBox, "Введите пароль для входа");
             this.passwordTextBox.IconRightClick += new System.EventHandler(this.PasswordTextBox_IconRightClick);
+            this.passwordTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressValidate);
             // 
             // loginTextBox
             // 
@@ -130,6 +132,7 @@
             this.loginTextBox.IconLeftSize = new System.Drawing.Size(30, 30);
             this.loginTextBox.Location = new System.Drawing.Point(47, 124);
             this.loginTextBox.Margin = new System.Windows.Forms.Padding(0);
+            this.loginTextBox.MaxLength = 32;
             this.loginTextBox.Name = "loginTextBox";
             this.loginTextBox.PasswordChar = '\0';
             this.loginTextBox.PlaceholderText = "88005553535 или example@mail.ru";
@@ -138,6 +141,7 @@
             this.loginTextBox.TabIndex = 87;
             this.loginTextBox.TextOffset = new System.Drawing.Point(4, 0);
             this.mainToolTip.SetToolTip(this.loginTextBox, "Введите логин для входа");
+            this.loginTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressValidate);
             // 
             // label3
             // 
@@ -169,6 +173,50 @@
             this.MainCheckBox.UncheckedState.BorderRadius = 2;
             this.MainCheckBox.UncheckedState.BorderThickness = 1;
             this.MainCheckBox.UncheckedState.FillColor = System.Drawing.Color.Transparent;
+            // 
+            // goToCloseForm
+            // 
+            this.goToCloseForm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.goToCloseForm.Animated = true;
+            this.goToCloseForm.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(94)))), ((int)(((byte)(117)))));
+            this.goToCloseForm.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.goToCloseForm.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.goToCloseForm.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.goToCloseForm.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.goToCloseForm.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.goToCloseForm.FillColor = System.Drawing.Color.Transparent;
+            this.goToCloseForm.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
+            this.goToCloseForm.ForeColor = System.Drawing.Color.White;
+            this.goToCloseForm.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(81)))), ((int)(((byte)(93)))));
+            this.goToCloseForm.Image = ((System.Drawing.Image)(resources.GetObject("goToCloseForm.Image")));
+            this.goToCloseForm.ImageOffset = new System.Drawing.Point(1, 0);
+            this.goToCloseForm.ImageSize = new System.Drawing.Size(25, 25);
+            this.goToCloseForm.Location = new System.Drawing.Point(443, 0);
+            this.goToCloseForm.Margin = new System.Windows.Forms.Padding(0);
+            this.goToCloseForm.Name = "goToCloseForm";
+            this.goToCloseForm.Size = new System.Drawing.Size(50, 35);
+            this.goToCloseForm.TabIndex = 24;
+            this.mainToolTip.SetToolTip(this.goToCloseForm, "Закрыть");
+            this.goToCloseForm.Click += new System.EventHandler(this.GoToCloseForm_Click);
+            // 
+            // helperButton
+            // 
+            this.helperButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.helperButton.BackColor = System.Drawing.Color.Transparent;
+            this.helperButton.CheckedState.ImageSize = new System.Drawing.Size(42, 42);
+            this.helperButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.helperButton.HoverState.ImageSize = new System.Drawing.Size(42, 42);
+            this.helperButton.Image = ((System.Drawing.Image)(resources.GetObject("helperButton.Image")));
+            this.helperButton.ImageOffset = new System.Drawing.Point(0, 0);
+            this.helperButton.ImageRotate = 0F;
+            this.helperButton.ImageSize = new System.Drawing.Size(48, 48);
+            this.helperButton.Location = new System.Drawing.Point(433, 482);
+            this.helperButton.Margin = new System.Windows.Forms.Padding(0);
+            this.helperButton.Name = "helperButton";
+            this.helperButton.PressedState.ImageSize = new System.Drawing.Size(42, 42);
+            this.helperButton.Size = new System.Drawing.Size(60, 60);
+            this.helperButton.TabIndex = 103;
+            this.mainToolTip.SetToolTip(this.helperButton, "Открыть руководство по данной странице");
             // 
             // myMessageBoxGoodAuth
             // 
@@ -230,48 +278,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(493, 35);
             this.panel1.TabIndex = 91;
-            // 
-            // goToCloseForm
-            // 
-            this.goToCloseForm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.goToCloseForm.Animated = true;
-            this.goToCloseForm.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(94)))), ((int)(((byte)(117)))));
-            this.goToCloseForm.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.goToCloseForm.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.goToCloseForm.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.goToCloseForm.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.goToCloseForm.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.goToCloseForm.FillColor = System.Drawing.Color.Transparent;
-            this.goToCloseForm.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
-            this.goToCloseForm.ForeColor = System.Drawing.Color.White;
-            this.goToCloseForm.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(81)))), ((int)(((byte)(93)))));
-            this.goToCloseForm.Image = ((System.Drawing.Image)(resources.GetObject("goToCloseForm.Image")));
-            this.goToCloseForm.ImageOffset = new System.Drawing.Point(1, 0);
-            this.goToCloseForm.ImageSize = new System.Drawing.Size(25, 25);
-            this.goToCloseForm.Location = new System.Drawing.Point(443, 0);
-            this.goToCloseForm.Margin = new System.Windows.Forms.Padding(0);
-            this.goToCloseForm.Name = "goToCloseForm";
-            this.goToCloseForm.Size = new System.Drawing.Size(50, 35);
-            this.goToCloseForm.TabIndex = 24;
-            this.goToCloseForm.Click += new System.EventHandler(this.GoToCloseForm_Click);
-            // 
-            // helperButton
-            // 
-            this.helperButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.helperButton.BackColor = System.Drawing.Color.Transparent;
-            this.helperButton.CheckedState.ImageSize = new System.Drawing.Size(42, 42);
-            this.helperButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.helperButton.HoverState.ImageSize = new System.Drawing.Size(42, 42);
-            this.helperButton.Image = ((System.Drawing.Image)(resources.GetObject("helperButton.Image")));
-            this.helperButton.ImageOffset = new System.Drawing.Point(0, 0);
-            this.helperButton.ImageRotate = 0F;
-            this.helperButton.ImageSize = new System.Drawing.Size(48, 48);
-            this.helperButton.Location = new System.Drawing.Point(433, 482);
-            this.helperButton.Margin = new System.Windows.Forms.Padding(0);
-            this.helperButton.Name = "helperButton";
-            this.helperButton.PressedState.ImageSize = new System.Drawing.Size(42, 42);
-            this.helperButton.Size = new System.Drawing.Size(60, 60);
-            this.helperButton.TabIndex = 103;
             // 
             // AuthForm
             // 

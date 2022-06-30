@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace VeterinaryClinic.Forms
 {
-    internal partial class HeadForm : Form
+    public partial class MeetingForm : Form
     {
-        internal HeadForm()
+        public MeetingForm()
         {
             InitializeComponent();
 

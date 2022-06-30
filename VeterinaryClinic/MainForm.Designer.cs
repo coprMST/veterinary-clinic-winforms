@@ -31,6 +31,7 @@ namespace VeterinaryClinic
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.menuPanel = new Guna.UI2.WinForms.Guna2Panel();
+            this.goToCreateMeeting = new Guna.UI2.WinForms.Guna2Button();
             this.goToSettingsPage = new Guna.UI2.WinForms.Guna2Button();
             this.goToLogOut = new Guna.UI2.WinForms.Guna2Button();
             this.userPanel = new Guna.UI2.WinForms.Guna2Panel();
@@ -61,6 +62,7 @@ namespace VeterinaryClinic
             // menuPanel
             // 
             this.menuPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(116)))), ((int)(((byte)(144)))));
+            this.menuPanel.Controls.Add(this.goToCreateMeeting);
             this.menuPanel.Controls.Add(this.goToSettingsPage);
             this.menuPanel.Controls.Add(this.goToLogOut);
             this.menuPanel.Controls.Add(this.userPanel);
@@ -77,6 +79,28 @@ namespace VeterinaryClinic
             this.menuPanel.Size = new System.Drawing.Size(220, 768);
             this.menuPanel.TabIndex = 1;
             this.menuPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.MenuPanel_Paint);
+            // 
+            // goToCreateMeeting
+            // 
+            this.goToCreateMeeting.Animated = true;
+            this.goToCreateMeeting.BorderRadius = 12;
+            this.goToCreateMeeting.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
+            this.goToCreateMeeting.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(94)))), ((int)(((byte)(117)))));
+            this.goToCreateMeeting.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.goToCreateMeeting.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.goToCreateMeeting.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.goToCreateMeeting.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.goToCreateMeeting.Dock = System.Windows.Forms.DockStyle.Top;
+            this.goToCreateMeeting.FillColor = System.Drawing.Color.Transparent;
+            this.goToCreateMeeting.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
+            this.goToCreateMeeting.ForeColor = System.Drawing.Color.White;
+            this.goToCreateMeeting.Location = new System.Drawing.Point(12, 261);
+            this.goToCreateMeeting.Name = "goToCreateMeeting";
+            this.goToCreateMeeting.Size = new System.Drawing.Size(196, 45);
+            this.goToCreateMeeting.TabIndex = 37;
+            this.goToCreateMeeting.Text = "Запись";
+            this.mainToolTip.SetToolTip(this.goToCreateMeeting, "Переход на страницу данных");
+            this.goToCreateMeeting.Click += new System.EventHandler(this.goToCreateMeeting_Click);
             // 
             // goToSettingsPage
             // 
@@ -254,7 +278,6 @@ namespace VeterinaryClinic
             this.goDataPage.TabIndex = 21;
             this.goDataPage.Text = "Данные";
             this.mainToolTip.SetToolTip(this.goDataPage, "Переход на страницу данных");
-            this.goDataPage.Visible = false;
             this.goDataPage.Click += new System.EventHandler(this.GoDataPage_Click);
             // 
             // goHeadPage
@@ -465,6 +488,7 @@ namespace VeterinaryClinic
         internal Guna.UI2.WinForms.Guna2Button goToAuthPage;
         internal System.Windows.Forms.Label label1;
         private Guna.UI2.WinForms.Guna2CirclePictureBox guna2CirclePictureBox1;
+        internal Guna.UI2.WinForms.Guna2Button goToCreateMeeting;
     }
 }
 

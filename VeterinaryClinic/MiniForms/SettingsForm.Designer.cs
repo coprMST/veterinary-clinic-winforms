@@ -42,7 +42,11 @@ namespace VeterinaryClinic.MiniForms
             this.panel1 = new System.Windows.Forms.Panel();
             this.goToCloseForm = new Guna.UI2.WinForms.Guna2Button();
             this.myMessageBoxInfo = new Guna.UI2.WinForms.Guna2MessageDialog();
+            this.label4 = new System.Windows.Forms.Label();
+            this.maxAmountRecordsTextBox = new Guna.UI2.WinForms.Guna2NumericUpDown();
+            this.mainToolTip = new Guna.UI2.WinForms.Guna2HtmlToolTip();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.maxAmountRecordsTextBox)).BeginInit();
             this.SuspendLayout();
             // 
             // goToSave
@@ -59,11 +63,12 @@ namespace VeterinaryClinic.MiniForms
             this.goToSave.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(116)))), ((int)(((byte)(144)))));
             this.goToSave.HoverState.FillColor = System.Drawing.Color.Transparent;
             this.goToSave.HoverState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(116)))), ((int)(((byte)(144)))));
-            this.goToSave.Location = new System.Drawing.Point(131, 350);
+            this.goToSave.Location = new System.Drawing.Point(131, 422);
             this.goToSave.Name = "goToSave";
             this.goToSave.Size = new System.Drawing.Size(220, 45);
             this.goToSave.TabIndex = 97;
             this.goToSave.Text = "Сохранить";
+            this.mainToolTip.SetToolTip(this.goToSave, "Сохранить настройки");
             this.goToSave.Click += new System.EventHandler(this.GoToSave_Click);
             // 
             // label1
@@ -72,7 +77,7 @@ namespace VeterinaryClinic.MiniForms
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(71, 227);
+            this.label1.Location = new System.Drawing.Point(71, 199);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(152, 19);
             this.label1.TabIndex = 96;
@@ -97,8 +102,9 @@ namespace VeterinaryClinic.MiniForms
             this.databaseTextBox.IconLeftSize = new System.Drawing.Size(30, 30);
             this.databaseTextBox.IconRightOffset = new System.Drawing.Point(12, 0);
             this.databaseTextBox.IconRightSize = new System.Drawing.Size(26, 26);
-            this.databaseTextBox.Location = new System.Drawing.Point(52, 255);
+            this.databaseTextBox.Location = new System.Drawing.Point(52, 227);
             this.databaseTextBox.Margin = new System.Windows.Forms.Padding(0);
+            this.databaseTextBox.MaxLength = 128;
             this.databaseTextBox.Name = "databaseTextBox";
             this.databaseTextBox.PasswordChar = '\0';
             this.databaseTextBox.PlaceholderText = "";
@@ -106,6 +112,8 @@ namespace VeterinaryClinic.MiniForms
             this.databaseTextBox.Size = new System.Drawing.Size(389, 51);
             this.databaseTextBox.TabIndex = 95;
             this.databaseTextBox.TextOffset = new System.Drawing.Point(4, 0);
+            this.mainToolTip.SetToolTip(this.databaseTextBox, "Введите имя базы данных");
+            this.databaseTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressValidate);
             // 
             // serverTextBox
             // 
@@ -124,8 +132,9 @@ namespace VeterinaryClinic.MiniForms
             this.serverTextBox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(116)))), ((int)(((byte)(144)))));
             this.serverTextBox.IconLeftOffset = new System.Drawing.Point(6, 0);
             this.serverTextBox.IconLeftSize = new System.Drawing.Size(30, 30);
-            this.serverTextBox.Location = new System.Drawing.Point(52, 108);
+            this.serverTextBox.Location = new System.Drawing.Point(52, 91);
             this.serverTextBox.Margin = new System.Windows.Forms.Padding(0);
+            this.serverTextBox.MaxLength = 128;
             this.serverTextBox.Name = "serverTextBox";
             this.serverTextBox.PasswordChar = '\0';
             this.serverTextBox.PlaceholderText = "";
@@ -133,6 +142,8 @@ namespace VeterinaryClinic.MiniForms
             this.serverTextBox.Size = new System.Drawing.Size(389, 51);
             this.serverTextBox.TabIndex = 94;
             this.serverTextBox.TextOffset = new System.Drawing.Point(4, 0);
+            this.mainToolTip.SetToolTip(this.serverTextBox, "Введите имя сервера");
+            this.serverTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressValidate);
             // 
             // label2
             // 
@@ -140,7 +151,7 @@ namespace VeterinaryClinic.MiniForms
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(71, 80);
+            this.label2.Location = new System.Drawing.Point(71, 63);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(111, 19);
             this.label2.TabIndex = 93;
@@ -152,11 +163,12 @@ namespace VeterinaryClinic.MiniForms
             this.label3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label3.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.label3.Location = new System.Drawing.Point(101, 169);
+            this.label3.Location = new System.Drawing.Point(101, 152);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(217, 20);
             this.label3.TabIndex = 99;
             this.label3.Text = "Использовать имя машины";
+            this.mainToolTip.SetToolTip(this.label3, "Использовать имя машины в качестве имени сервера");
             this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // mainCheckBox
@@ -166,10 +178,11 @@ namespace VeterinaryClinic.MiniForms
             this.mainCheckBox.CheckedState.BorderThickness = 0;
             this.mainCheckBox.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(116)))), ((int)(((byte)(144)))));
             this.mainCheckBox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.mainCheckBox.Location = new System.Drawing.Point(75, 167);
+            this.mainCheckBox.Location = new System.Drawing.Point(75, 150);
             this.mainCheckBox.Name = "mainCheckBox";
             this.mainCheckBox.Size = new System.Drawing.Size(24, 24);
             this.mainCheckBox.TabIndex = 98;
+            this.mainToolTip.SetToolTip(this.mainCheckBox, "Использовать имя машины в качестве имени сервера");
             this.mainCheckBox.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(48)))), ((int)(((byte)(100)))));
             this.mainCheckBox.UncheckedState.BorderRadius = 2;
             this.mainCheckBox.UncheckedState.BorderThickness = 1;
@@ -193,6 +206,7 @@ namespace VeterinaryClinic.MiniForms
             this.helperButton.PressedState.ImageSize = new System.Drawing.Size(42, 42);
             this.helperButton.Size = new System.Drawing.Size(60, 60);
             this.helperButton.TabIndex = 102;
+            this.mainToolTip.SetToolTip(this.helperButton, "Открыть руководство по данной странице");
             // 
             // goToDefault
             // 
@@ -208,11 +222,12 @@ namespace VeterinaryClinic.MiniForms
             this.goToDefault.HoverState.BorderColor = System.Drawing.Color.Transparent;
             this.goToDefault.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(116)))), ((int)(((byte)(144)))));
             this.goToDefault.HoverState.ForeColor = System.Drawing.Color.White;
-            this.goToDefault.Location = new System.Drawing.Point(131, 435);
+            this.goToDefault.Location = new System.Drawing.Point(131, 482);
             this.goToDefault.Name = "goToDefault";
             this.goToDefault.Size = new System.Drawing.Size(220, 45);
             this.goToDefault.TabIndex = 103;
             this.goToDefault.Text = "Сбросить";
+            this.mainToolTip.SetToolTip(this.goToDefault, "Выставить настройки по умолчанию\r\n");
             this.goToDefault.Click += new System.EventHandler(this.GoToDefault_Click);
             // 
             // panel1
@@ -247,6 +262,7 @@ namespace VeterinaryClinic.MiniForms
             this.goToCloseForm.Name = "goToCloseForm";
             this.goToCloseForm.Size = new System.Drawing.Size(50, 35);
             this.goToCloseForm.TabIndex = 24;
+            this.mainToolTip.SetToolTip(this.goToCloseForm, "Закрыть");
             this.goToCloseForm.Click += new System.EventHandler(this.GoToCloseForm_Click);
             // 
             // myMessageBoxInfo
@@ -258,12 +274,65 @@ namespace VeterinaryClinic.MiniForms
             this.myMessageBoxInfo.Style = Guna.UI2.WinForms.MessageDialogStyle.Dark;
             this.myMessageBoxInfo.Text = null;
             // 
+            // label4
+            // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label4.ForeColor = System.Drawing.Color.Black;
+            this.label4.Location = new System.Drawing.Point(71, 304);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(302, 19);
+            this.label4.TabIndex = 106;
+            this.label4.Text = "Макс. количество записей в таблице";
+            // 
+            // maxAmountRecordsTextBox
+            // 
+            this.maxAmountRecordsTextBox.BackColor = System.Drawing.Color.Transparent;
+            this.maxAmountRecordsTextBox.BorderRadius = 8;
+            this.maxAmountRecordsTextBox.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.maxAmountRecordsTextBox.Font = new System.Drawing.Font("Arial", 14F);
+            this.maxAmountRecordsTextBox.ForeColor = System.Drawing.Color.Black;
+            this.maxAmountRecordsTextBox.Location = new System.Drawing.Point(52, 331);
+            this.maxAmountRecordsTextBox.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.maxAmountRecordsTextBox.Maximum = new decimal(new int[] {
+            200,
+            0,
+            0,
+            0});
+            this.maxAmountRecordsTextBox.Minimum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.maxAmountRecordsTextBox.Name = "maxAmountRecordsTextBox";
+            this.maxAmountRecordsTextBox.Size = new System.Drawing.Size(389, 51);
+            this.maxAmountRecordsTextBox.TabIndex = 107;
+            this.mainToolTip.SetToolTip(this.maxAmountRecordsTextBox, "Введите максимальное количество записей в таблице");
+            this.maxAmountRecordsTextBox.UpDownButtonFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(234)))), ((int)(((byte)(238)))));
+            this.maxAmountRecordsTextBox.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            // 
+            // mainToolTip
+            // 
+            this.mainToolTip.AllowLinksHandling = true;
+            this.mainToolTip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(234)))), ((int)(((byte)(238)))));
+            this.mainToolTip.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(213)))), ((int)(((byte)(215)))));
+            this.mainToolTip.ForeColor = System.Drawing.Color.Black;
+            this.mainToolTip.MaximumSize = new System.Drawing.Size(0, 0);
+            this.mainToolTip.TitleFont = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
+            // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(244)))), ((int)(((byte)(246)))));
             this.ClientSize = new System.Drawing.Size(493, 542);
+            this.Controls.Add(this.maxAmountRecordsTextBox);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.goToDefault);
             this.Controls.Add(this.helperButton);
@@ -280,6 +349,7 @@ namespace VeterinaryClinic.MiniForms
             this.Text = "SettingsForm";
             this.Load += new System.EventHandler(this.SettingsForm_Load);
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.maxAmountRecordsTextBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -299,5 +369,8 @@ namespace VeterinaryClinic.MiniForms
         private System.Windows.Forms.Panel panel1;
         private Guna.UI2.WinForms.Guna2Button goToCloseForm;
         private Guna.UI2.WinForms.Guna2MessageDialog myMessageBoxInfo;
+        private System.Windows.Forms.Label label4;
+        private Guna.UI2.WinForms.Guna2NumericUpDown maxAmountRecordsTextBox;
+        private Guna.UI2.WinForms.Guna2HtmlToolTip mainToolTip;
     }
 }

@@ -12,6 +12,8 @@ namespace VeterinaryClinic
         internal static string EmployeeId { get; set; }
         internal static string CustomerId { get; set; }
         internal static string UserName { get; set; }
+        internal static int AmountRecordsInPage = 10;
+
 
         internal static bool AutoAuthUser()
         {

@@ -9,28 +9,26 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Guna.UI2.WinForms;
+using VeterinaryClinic.MiniForms;
 
 namespace VeterinaryClinic.Forms
 {
     internal partial class ServicesForm : Form
     {
-        private int _amountRecordsInPage = 10;
-        private int _amountPage = 0;
-        private int _amountRecord = 0;
-        private int _numberPage = 3;
+        private int _amountPage;
+        private int _amountRecord;
         private int _nowPage = 1;
-
 
         internal ServicesForm()
         {
             InitializeComponent();
-            UpdateDataGrid();
+            GoUpdateDataGrid();
         }
 
-        private void UpdateDataGrid()
+        private void GoUpdateDataGrid()
         {
-            var result1 = Data.ReturnDataTable($@"select count(ST.ServiceTypeID) from Services S left join ServiceTypes ST on S.ServiceID = ST.ServiceID where S.InArchive = 0 and ST.InArchive = 0 and ServiceName like '%{seacher.Text.Trim()}%' and ServiceTypeName like '%{seacher.Text.Trim()}%'");
-            var result2 = Data.ReturnDataTable($@"select ServiceName, ServiceTypeName, FirstPrice, SecondPrice from Services S left join ServiceTypes ST on S.ServiceID = ST.ServiceID where S.InArchive = 0 and ST.InArchive = 0 and ServiceName like '%{seacher.Text.Trim()}%' and ServiceTypeName like '%{seacher.Text.Trim()}%' ORDER BY S.ServiceName DESC OFFSET {_amountRecordsInPage * _numberPage - _amountRecordsInPage} ROWS FETCH NEXT {_amountRecordsInPage} ROWS ONLY");
+            var result1 = Data.ReturnDataTable($@"select count(ST.ServiceTypeID) from Services S left join ServiceTypes ST on S.ServiceID = ST.ServiceID where S.InArchive = 0 and ST.InArchive = 0 and ServiceName like '%{seacher.Text.Trim()}%' or ServiceTypeName like '%{seacher.Text.Trim()}%'");
+            var result2 = Data.ReturnDataTable($@"select ServiceName, ServiceTypeName, FirstPrice, SecondPrice from Services S left join ServiceTypes ST on S.ServiceID = ST.ServiceID where S.InArchive = 0 and ST.InArchive = 0 and ServiceName like '%{seacher.Text.Trim()}%' or ServiceTypeName like '%{seacher.Text.Trim()}%' ORDER BY S.ServiceName ASC OFFSET {_nowPage * AppUser.AmountRecordsInPage - AppUser.AmountRecordsInPage} ROWS FETCH NEXT {AppUser.AmountRecordsInPage} ROWS ONLY");
 
             if (result1.HasError || result2.HasError)
             {
@@ -44,32 +42,44 @@ namespace VeterinaryClinic.Forms
             {
                 zeroRowsLabel.Visible = true;
                 mainTable.Rows.Clear();
-                countRowsLabel.Text = "Записи не найдены";
+                countRowsLabel.Text = "";
+                seeLabel.Text = "";
                 return;
             }
             zeroRowsLabel.Visible = false;
 
             _amountRecord = Convert.ToInt32(result1.DataTable.Rows[0][0]);
-            countRowsLabel.Text = $"Всего найдено {_amountRecord} записей";
+
+            countRowsLabel.Text = $"Всего найдено {_amountRecord} услуг";
+            seeLabel.Text = _amountRecord >= _nowPage * AppUser.AmountRecordsInPage ? $"показано с {_nowPage * AppUser.AmountRecordsInPage - AppUser.AmountRecordsInPage + 1} по {_nowPage * AppUser.AmountRecordsInPage} услугу" : $"показано с {_nowPage * AppUser.AmountRecordsInPage - AppUser.AmountRecordsInPage + 1} по {_amountRecord} услугу";
 
             mainTable.ColumnCount = result2.DataTable.Columns.Count;
-            mainTable.RowCount = _amountRecordsInPage;
+            mainTable.RowCount = result2.DataTable.Rows.Count;
 
-            for (var i = 0; i < _amountRecordsInPage; i++)
+            mainTable.Columns[0].Width = 250;
+            mainTable.Columns[1].Width = 520;
+            mainTable.Columns[2].Width = 180;
+            for (var i = 0; i < result2.DataTable.Rows.Count; i++)
             {
                 mainTable[0, i].Value = result2.DataTable.Rows[i][0].ToString();
                 mainTable[1, i].Value = result2.DataTable.Rows[i][1].ToString();
                 mainTable[2, i].Value = result2.DataTable.Rows[i][3] == DBNull.Value ? result2.DataTable.Rows[i][2] + "P" : result2.DataTable.Rows[i][2] + " - " + result2.DataTable.Rows[i][3] + "P";
-                mainTable.Columns[0].Width = 250;
-                mainTable.Columns[1].Width = 520;
-                mainTable.Columns[2].Width = 180;
             }
 
+            _amountPage = _amountRecord / AppUser.AmountRecordsInPage;
+            if (Convert.ToDouble(_amountRecord % AppUser.AmountRecordsInPage) > 0)
+                _amountPage++;
+
+            amountPagesComboBox.Items.Clear();
+            for (var i = 0; i < _amountPage; i++)
+                amountPagesComboBox.Items.Add(i + 1);
+            amountPagesComboBox.SelectedIndex = _nowPage - 1;
         }
 
         private void GoToSearch_Click(object sender, EventArgs e)
         {
-            UpdateDataGrid();
+            _nowPage = 1;
+            GoUpdateDataGrid();
         }
 
         private void UpdateMove(object sender, EventArgs e)
@@ -78,17 +88,43 @@ namespace VeterinaryClinic.Forms
 
             switch (bt.Name)
             {
+                case "doubleRightWarp":
+                    _nowPage = _amountPage;
+                    break;
+
+                case "rightWarp":
+                    if (_nowPage + 1 <= _amountPage) 
+                        _nowPage += 1;
+                    break;
+
                 case "doubleLeftWarp":
                     _nowPage = 1;
                     break;
+
+                case "leftWarp":
+                    if (_nowPage - 1 > 0)
+                        _nowPage -= 1;
+                    break;
             }
 
-            void Calc(int move)
-            {
+            GoUpdateDataGrid();
+        }
 
-            }
+        private void AmountPagesComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (_nowPage.ToString() == amountPagesComboBox.SelectedItem.ToString())
+                return;
 
-            UpdateDataGrid();
+            _nowPage = Convert.ToInt32(amountPagesComboBox.SelectedItem);
+            GoUpdateDataGrid();
+        }
+
+        private void Seacher_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar != (char) Keys.Enter) return;
+
+            _nowPage = 1;
+            GoUpdateDataGrid();
         }
     }
 }

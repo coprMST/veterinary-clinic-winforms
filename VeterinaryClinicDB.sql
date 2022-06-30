@@ -25,17 +25,17 @@ create table [dbo].[Positions] (
 	[PositionID] smallint identity primary key,
 	[PositionName] varchar(128) unique not null,
 	[Salary] decimal(19,2) check (Salary >= 0) not null,
-	[Responsibilities] varchar(512) null,
+	[Responsibilities] varchar(512) not null,
 )
 go
 
-insert into [dbo].[Positions] ([PositionName], [Salary])
+insert into [dbo].[Positions] ([PositionName], [Salary], [Responsibilities])
 values
-('Врач', '55000'),
-('Старший врач', '35000')
+('Врач', '55000', 'Лечение и назначение лечения животным'),
+('Старший врач', '35000', 'Проведение сложных медицинских работ и несение ответственности за медицинских работников'),
+('Консультант', '30000', 'Консультация клиентов по поводу работы с животными'),
+('Администратор', '60000', 'Поддержание работы информационной системы')
 go
-
---select [PositionName], [Salary] + 'P' as asb from [Positions]
 
 create table [dbo].[AccountTypes] (
 	[AccountTypeID] tinyint identity primary key,
@@ -185,7 +185,14 @@ create table [dbo].[ListOfOrders] (
 )
 go
 
---execute [dbo].[CheckPhoneAndEmail] 'gg', 'g'
+create table [dbo].[ListOfDiseases] (
+	[DiseaseID] uniqueidentifier primary key default newsequentialid(),
+	[DiseaseName] varchar(128) not null,
+	[EmployeeID] uniqueidentifier foreign key references [dbo].[Employees]([EmployeeID]) on delete no action on update cascade not null,
+	[PetID] uniqueidentifier foreign key references [dbo].[Pets]([PetID]) on delete no action on update no action not null,
+	[DateTime] integer default [dbo].[UNIX_TIMESTAMP](sysdatetime()) not null,
+)
+go
 
 /* Хранимая процедура, проверяющая есть ли пользователь
    с указанными номером телефона и электронной почтой (для регистрации) */
@@ -277,11 +284,6 @@ as
 		SELECT 2 WHERE @null=1
 	end
 go
-
-
-select S.ServiceID, ST.ServiceTypeID, S.ServiceName, ST.ServiceTypeName, FirstPrice, SecondPrice from Services S left join ServiceTypes ST on S.ServiceID = ST.ServiceID where ST.InArchive = 0
-
---execute [dbo].[CheckPhoneAndEmail] null, '77lm@mail.ru'
 
 exec [dbo].[AddNewCustomer] 'Дрягина', 'Вера', 'Семеновна', '20.06.1956 0:00:00', '79597218076', 'vera7606@hotmail.com', 'Rj58K37vo1GLY7sk8x'
 exec [dbo].[AddNewCustomer] 'Никишов', 'Иван', 'Юрьевич', '05.04.1984 0:00:00', '79789641998', 'ivan22021996@ya.ru', 'Xw06B19br3FVP7fb0n'
@@ -448,3 +450,14 @@ exec [dbo].[AddNewEmployee] 'Набатников', 'Марк', 'Федорович', '02.01.1994', '79
 exec [dbo].[AddNewEmployee] 'Гачегова', 'Мария', 'Павловна', '15.07.1969', '79868816248', 'mariya15071969@ya.ru', '11f52bf94'
 exec [dbo].[AddNewEmployee] 'Ратникова', 'Елизавета', 'Захаровна', '12.11.1983', '79961825948', 'elizaveta12111983@rambler.ru', '35f7ee252'
 go
+
+
+
+
+
+
+delete from Positions where PositionID = '6'
+
+select count(ServiceID) from Services where ServiceName like '%{seacher.Text.Trim()}%'
+
+

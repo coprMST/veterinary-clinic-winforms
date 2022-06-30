@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using VeterinaryClinic.Forms;
 using static System.String;
 
 namespace VeterinaryClinic.MiniForms
@@ -23,6 +24,7 @@ namespace VeterinaryClinic.MiniForms
         {
             serverTextBox.PlaceholderText = Data.Settings.DataSource;
             databaseTextBox.PlaceholderText = Data.Settings.InitialCatalog;
+            maxAmountRecordsTextBox.Value = AppUser.AmountRecordsInPage;
         }
 
         private void GoToCloseForm_Click(object sender, EventArgs e)
@@ -32,6 +34,9 @@ namespace VeterinaryClinic.MiniForms
 
         private void GoToSave_Click(object sender, EventArgs e)
         {
+            if (serverTextBox.Text.Trim() == Empty && databaseTextBox.Text.Trim() == Empty && maxAmountRecordsTextBox.Value == AppUser.AmountRecordsInPage && !mainCheckBox.Checked)
+                return;
+
             if (serverTextBox.Text.Trim() != Empty)
                 Data.Settings.DataSource = serverTextBox.Text.Trim();
 
@@ -41,8 +46,8 @@ namespace VeterinaryClinic.MiniForms
             if (databaseTextBox.Text.Trim() != Empty)
                 Data.Settings.InitialCatalog = databaseTextBox.Text.Trim();
 
-            if (serverTextBox.Text.Trim() == Empty && databaseTextBox.Text.Trim() == Empty) 
-                return;
+            if (maxAmountRecordsTextBox.Value != AppUser.AmountRecordsInPage)
+                AppUser.AmountRecordsInPage = Convert.ToInt32(maxAmountRecordsTextBox.Value);
 
             myMessageBoxInfo.Show("Настройки были успешно изменены");
 
@@ -53,6 +58,7 @@ namespace VeterinaryClinic.MiniForms
         {
             Data.Settings.DataSource = Environment.MachineName;
             Data.Settings.InitialCatalog = "VeterinaryClinicDB";
+            AppUser.AmountRecordsInPage = 10;
             myMessageBoxInfo.Show("Настройки были успешно сброшены");
 
             Close();
@@ -66,6 +72,12 @@ namespace VeterinaryClinic.MiniForms
         private void MainCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             serverTextBox.Enabled = !mainCheckBox.Checked;
+        }
+
+        private void KeyPressValidate(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar >= 'A' && e.KeyChar <= 'Z') || (e.KeyChar >= 'А' && e.KeyChar <= 'Я') || (e.KeyChar >= 'а' && e.KeyChar <= 'я') || (e.KeyChar >= 1 && e.KeyChar <= 31) || (e.KeyChar >= 'a' && e.KeyChar <= 'z') || (e.KeyChar >= '0' && e.KeyChar <= '9') || e.KeyChar == '-' || (e.KeyChar >= 33 && e.KeyChar <= 38) || (e.KeyChar >= 40 && e.KeyChar <= 126) || e.KeyChar == (char)Keys.Back) { }
+            else e.Handled = true;
         }
     }
 }
