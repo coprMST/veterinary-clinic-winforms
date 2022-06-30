@@ -30,17 +30,15 @@ namespace VeterinaryClinic.Forms
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ServicesForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.doubleRightWarp = new Guna.UI2.WinForms.Guna2ImageButton();
             this.rightWarp = new Guna.UI2.WinForms.Guna2ImageButton();
             this.amountPagesComboBox = new Guna.UI2.WinForms.Guna2ComboBox();
             this.leftWarp = new Guna.UI2.WinForms.Guna2ImageButton();
             this.doubleLeftWarp = new Guna.UI2.WinForms.Guna2ImageButton();
-            this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.seacher = new Guna.UI2.WinForms.Guna2TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.countRowsLabel = new System.Windows.Forms.Label();
@@ -56,6 +54,7 @@ namespace VeterinaryClinic.Forms
             // 
             // doubleRightWarp
             // 
+            this.doubleRightWarp.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.doubleRightWarp.BackColor = System.Drawing.Color.Transparent;
             this.doubleRightWarp.CheckedState.ImageSize = new System.Drawing.Size(42, 42);
             this.doubleRightWarp.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -65,7 +64,7 @@ namespace VeterinaryClinic.Forms
             this.doubleRightWarp.ImageOffset = new System.Drawing.Point(0, 0);
             this.doubleRightWarp.ImageRotate = 0F;
             this.doubleRightWarp.ImageSize = new System.Drawing.Size(42, 42);
-            this.doubleRightWarp.Location = new System.Drawing.Point(444, 667);
+            this.doubleRightWarp.Location = new System.Drawing.Point(571, 673);
             this.doubleRightWarp.Margin = new System.Windows.Forms.Padding(0);
             this.doubleRightWarp.Name = "doubleRightWarp";
             this.doubleRightWarp.PressedState.ImageSize = new System.Drawing.Size(42, 42);
@@ -75,6 +74,7 @@ namespace VeterinaryClinic.Forms
             // 
             // rightWarp
             // 
+            this.rightWarp.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.rightWarp.BackColor = System.Drawing.Color.Transparent;
             this.rightWarp.CheckedState.ImageSize = new System.Drawing.Size(42, 42);
             this.rightWarp.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -84,7 +84,7 @@ namespace VeterinaryClinic.Forms
             this.rightWarp.ImageOffset = new System.Drawing.Point(0, 0);
             this.rightWarp.ImageRotate = 0F;
             this.rightWarp.ImageSize = new System.Drawing.Size(42, 42);
-            this.rightWarp.Location = new System.Drawing.Point(409, 667);
+            this.rightWarp.Location = new System.Drawing.Point(536, 673);
             this.rightWarp.Margin = new System.Windows.Forms.Padding(0);
             this.rightWarp.Name = "rightWarp";
             this.rightWarp.PressedState.ImageSize = new System.Drawing.Size(42, 42);
@@ -94,6 +94,7 @@ namespace VeterinaryClinic.Forms
             // 
             // amountPagesComboBox
             // 
+            this.amountPagesComboBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.amountPagesComboBox.BackColor = System.Drawing.Color.Transparent;
             this.amountPagesComboBox.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(244)))), ((int)(((byte)(246)))));
             this.amountPagesComboBox.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -102,21 +103,25 @@ namespace VeterinaryClinic.Forms
             this.amountPagesComboBox.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(244)))), ((int)(((byte)(246)))));
             this.amountPagesComboBox.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(116)))), ((int)(((byte)(144)))));
             this.amountPagesComboBox.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(116)))), ((int)(((byte)(144)))));
-            this.amountPagesComboBox.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.amountPagesComboBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.amountPagesComboBox.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
+            this.amountPagesComboBox.ForeColor = System.Drawing.Color.Black;
             this.amountPagesComboBox.ItemHeight = 30;
+            this.amountPagesComboBox.Items.AddRange(new object[] {
+            "1"});
             this.amountPagesComboBox.ItemsAppearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(244)))), ((int)(((byte)(246)))));
             this.amountPagesComboBox.ItemsAppearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(244)))), ((int)(((byte)(246)))));
-            this.amountPagesComboBox.Location = new System.Drawing.Point(345, 666);
+            this.amountPagesComboBox.Location = new System.Drawing.Point(472, 672);
             this.amountPagesComboBox.Margin = new System.Windows.Forms.Padding(0);
             this.amountPagesComboBox.Name = "amountPagesComboBox";
             this.amountPagesComboBox.Size = new System.Drawing.Size(64, 36);
+            this.amountPagesComboBox.StartIndex = 0;
             this.amountPagesComboBox.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.amountPagesComboBox.TabIndex = 93;
             this.amountPagesComboBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // leftWarp
             // 
+            this.leftWarp.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.leftWarp.BackColor = System.Drawing.Color.Transparent;
             this.leftWarp.CheckedState.ImageSize = new System.Drawing.Size(42, 42);
             this.leftWarp.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -126,7 +131,7 @@ namespace VeterinaryClinic.Forms
             this.leftWarp.ImageOffset = new System.Drawing.Point(0, 0);
             this.leftWarp.ImageRotate = 0F;
             this.leftWarp.ImageSize = new System.Drawing.Size(42, 42);
-            this.leftWarp.Location = new System.Drawing.Point(310, 666);
+            this.leftWarp.Location = new System.Drawing.Point(437, 672);
             this.leftWarp.Margin = new System.Windows.Forms.Padding(0);
             this.leftWarp.Name = "leftWarp";
             this.leftWarp.PressedState.ImageSize = new System.Drawing.Size(42, 42);
@@ -136,6 +141,7 @@ namespace VeterinaryClinic.Forms
             // 
             // doubleLeftWarp
             // 
+            this.doubleLeftWarp.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.doubleLeftWarp.BackColor = System.Drawing.Color.Transparent;
             this.doubleLeftWarp.CheckedState.ImageSize = new System.Drawing.Size(42, 42);
             this.doubleLeftWarp.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -145,32 +151,13 @@ namespace VeterinaryClinic.Forms
             this.doubleLeftWarp.ImageOffset = new System.Drawing.Point(0, 0);
             this.doubleLeftWarp.ImageRotate = 0F;
             this.doubleLeftWarp.ImageSize = new System.Drawing.Size(42, 42);
-            this.doubleLeftWarp.Location = new System.Drawing.Point(275, 667);
+            this.doubleLeftWarp.Location = new System.Drawing.Point(402, 673);
             this.doubleLeftWarp.Margin = new System.Windows.Forms.Padding(0);
             this.doubleLeftWarp.Name = "doubleLeftWarp";
             this.doubleLeftWarp.PressedState.ImageSize = new System.Drawing.Size(42, 42);
             this.doubleLeftWarp.Size = new System.Drawing.Size(35, 35);
             this.doubleLeftWarp.TabIndex = 91;
             this.doubleLeftWarp.Click += new System.EventHandler(this.UpdateMove);
-            // 
-            // guna2Panel2
-            // 
-            this.guna2Panel2.Location = new System.Drawing.Point(790, 119);
-            this.guna2Panel2.Name = "guna2Panel2";
-            this.guna2Panel2.Size = new System.Drawing.Size(200, 602);
-            this.guna2Panel2.TabIndex = 90;
-            // 
-            // label1
-            // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
-            this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(31, 62);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(69, 22);
-            this.label1.TabIndex = 89;
-            this.label1.Text = "Поиск";
             // 
             // seacher
             // 
@@ -191,7 +178,7 @@ namespace VeterinaryClinic.Forms
             this.seacher.IconLeft = ((System.Drawing.Image)(resources.GetObject("seacher.IconLeft")));
             this.seacher.IconLeftOffset = new System.Drawing.Point(3, 0);
             this.seacher.IconLeftSize = new System.Drawing.Size(28, 28);
-            this.seacher.Location = new System.Drawing.Point(19, 84);
+            this.seacher.Location = new System.Drawing.Point(19, 69);
             this.seacher.Margin = new System.Windows.Forms.Padding(0);
             this.seacher.Name = "seacher";
             this.seacher.PasswordChar = '\0';
@@ -209,9 +196,9 @@ namespace VeterinaryClinic.Forms
             this.label3.ForeColor = System.Drawing.Color.Black;
             this.label3.Location = new System.Drawing.Point(31, 11);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(301, 22);
+            this.label3.Size = new System.Drawing.Size(388, 22);
             this.label3.TabIndex = 87;
-            this.label3.Text = "Просмотр и работа с данными";
+            this.label3.Text = "Просмотр услуг ветеринарной клиники";
             // 
             // countRowsLabel
             // 
@@ -219,7 +206,7 @@ namespace VeterinaryClinic.Forms
             this.countRowsLabel.AutoSize = true;
             this.countRowsLabel.Font = new System.Drawing.Font("Arial", 12F);
             this.countRowsLabel.ForeColor = System.Drawing.Color.Black;
-            this.countRowsLabel.Location = new System.Drawing.Point(32, 634);
+            this.countRowsLabel.Location = new System.Drawing.Point(32, 605);
             this.countRowsLabel.Name = "countRowsLabel";
             this.countRowsLabel.Size = new System.Drawing.Size(187, 18);
             this.countRowsLabel.TabIndex = 86;
@@ -231,64 +218,64 @@ namespace VeterinaryClinic.Forms
             this.mainTable.AllowUserToDeleteRows = false;
             this.mainTable.AllowUserToResizeColumns = false;
             this.mainTable.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            this.mainTable.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.mainTable.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
+            this.mainTable.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            this.mainTable.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.mainTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.mainTable.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(230)))), ((int)(((byte)(227)))));
+            this.mainTable.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(244)))), ((int)(((byte)(246)))));
             this.mainTable.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.mainTable.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.mainTable.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(245)))), ((int)(((byte)(250)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(245)))), ((int)(((byte)(250)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.mainTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(245)))), ((int)(((byte)(250)))));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(245)))), ((int)(((byte)(250)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.mainTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.mainTable.ColumnHeadersHeight = 40;
             this.mainTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.mainTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column6,
             this.Column7,
             this.Column8});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(175)))), ((int)(((byte)(163)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.mainTable.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(167)))), ((int)(((byte)(187)))));
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.mainTable.DefaultCellStyle = dataGridViewCellStyle7;
             this.mainTable.EnableHeadersVisualStyles = false;
-            this.mainTable.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(230)))), ((int)(((byte)(227)))));
-            this.mainTable.Location = new System.Drawing.Point(19, 154);
+            this.mainTable.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(244)))), ((int)(((byte)(246)))));
+            this.mainTable.Location = new System.Drawing.Point(19, 155);
             this.mainTable.MultiSelect = false;
             this.mainTable.Name = "mainTable";
             this.mainTable.ReadOnly = true;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(245)))), ((int)(((byte)(250)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.mainTable.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(116)))), ((int)(((byte)(144)))));
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.mainTable.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.mainTable.RowHeadersVisible = false;
             this.mainTable.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.mainTable.RowTemplate.DividerHeight = 5;
             this.mainTable.RowTemplate.Height = 40;
             this.mainTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.mainTable.Size = new System.Drawing.Size(750, 469);
+            this.mainTable.Size = new System.Drawing.Size(964, 447);
             this.mainTable.TabIndex = 85;
             this.mainTable.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.mainTable.ThemeStyle.AlternatingRowsStyle.Font = null;
             this.mainTable.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
             this.mainTable.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
             this.mainTable.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
-            this.mainTable.ThemeStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(230)))), ((int)(((byte)(227)))));
-            this.mainTable.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(230)))), ((int)(((byte)(227)))));
+            this.mainTable.ThemeStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(244)))), ((int)(((byte)(246)))));
+            this.mainTable.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(244)))), ((int)(((byte)(246)))));
             this.mainTable.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(245)))), ((int)(((byte)(250)))));
             this.mainTable.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.mainTable.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 8F);
@@ -307,14 +294,14 @@ namespace VeterinaryClinic.Forms
             // Column6
             // 
             this.Column6.FillWeight = 283.326F;
-            this.Column6.HeaderText = "Услуги";
+            this.Column6.HeaderText = "Категория";
             this.Column6.Name = "Column6";
             this.Column6.ReadOnly = true;
             // 
             // Column7
             // 
             this.Column7.FillWeight = 7.575562F;
-            this.Column7.HeaderText = "Тип услуги";
+            this.Column7.HeaderText = "Услуга";
             this.Column7.Name = "Column7";
             this.Column7.ReadOnly = true;
             // 
@@ -343,7 +330,7 @@ namespace VeterinaryClinic.Forms
             this.goToSearch.Font = new System.Drawing.Font("Arial", 12F);
             this.goToSearch.ForeColor = System.Drawing.Color.Black;
             this.goToSearch.HoverState.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
-            this.goToSearch.Location = new System.Drawing.Point(649, 84);
+            this.goToSearch.Location = new System.Drawing.Point(649, 69);
             this.goToSearch.Margin = new System.Windows.Forms.Padding(0);
             this.goToSearch.Name = "goToSearch";
             this.goToSearch.Size = new System.Drawing.Size(93, 40);
@@ -357,7 +344,7 @@ namespace VeterinaryClinic.Forms
             this.zeroRowsLabel.AutoSize = true;
             this.zeroRowsLabel.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold);
             this.zeroRowsLabel.ForeColor = System.Drawing.Color.Black;
-            this.zeroRowsLabel.Location = new System.Drawing.Point(158, 378);
+            this.zeroRowsLabel.Location = new System.Drawing.Point(252, 383);
             this.zeroRowsLabel.Name = "zeroRowsLabel";
             this.zeroRowsLabel.Size = new System.Drawing.Size(507, 29);
             this.zeroRowsLabel.TabIndex = 97;
@@ -370,7 +357,7 @@ namespace VeterinaryClinic.Forms
             this.errorLabel.AutoSize = true;
             this.errorLabel.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold);
             this.errorLabel.ForeColor = System.Drawing.Color.Black;
-            this.errorLabel.Location = new System.Drawing.Point(164, 349);
+            this.errorLabel.Location = new System.Drawing.Point(258, 354);
             this.errorLabel.Name = "errorLabel";
             this.errorLabel.Size = new System.Drawing.Size(494, 29);
             this.errorLabel.TabIndex = 98;
@@ -391,8 +378,6 @@ namespace VeterinaryClinic.Forms
             this.Controls.Add(this.amountPagesComboBox);
             this.Controls.Add(this.leftWarp);
             this.Controls.Add(this.doubleLeftWarp);
-            this.Controls.Add(this.guna2Panel2);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.seacher);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.countRowsLabel);
@@ -413,8 +398,6 @@ namespace VeterinaryClinic.Forms
         private Guna.UI2.WinForms.Guna2ComboBox amountPagesComboBox;
         private Guna.UI2.WinForms.Guna2ImageButton leftWarp;
         private Guna.UI2.WinForms.Guna2ImageButton doubleLeftWarp;
-        private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
-        private System.Windows.Forms.Label label1;
         private Guna.UI2.WinForms.Guna2TextBox seacher;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label countRowsLabel;

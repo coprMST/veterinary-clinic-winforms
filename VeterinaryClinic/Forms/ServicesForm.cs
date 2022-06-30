@@ -35,6 +35,7 @@ namespace VeterinaryClinic.Forms
             if (result1.HasError || result2.HasError)
             {
                 errorLabel.Visible = true;
+                mainTable.Rows.Clear();
                 return;
             }
             errorLabel.Visible = false;
@@ -42,6 +43,7 @@ namespace VeterinaryClinic.Forms
             if (result2.HasZeroRows)
             {
                 zeroRowsLabel.Visible = true;
+                mainTable.Rows.Clear();
                 countRowsLabel.Text = "Записи не найдены";
                 return;
             }
@@ -58,9 +60,9 @@ namespace VeterinaryClinic.Forms
                 mainTable[0, i].Value = result2.DataTable.Rows[i][0].ToString();
                 mainTable[1, i].Value = result2.DataTable.Rows[i][1].ToString();
                 mainTable[2, i].Value = result2.DataTable.Rows[i][3] == DBNull.Value ? result2.DataTable.Rows[i][2] + "P" : result2.DataTable.Rows[i][2] + " - " + result2.DataTable.Rows[i][3] + "P";
-                mainTable.Columns[0].Width = 200;
-                mainTable.Columns[1].Width = 400;
-                mainTable.Columns[2].Width = 200;
+                mainTable.Columns[0].Width = 250;
+                mainTable.Columns[1].Width = 520;
+                mainTable.Columns[2].Width = 180;
             }
 
         }
@@ -72,7 +74,7 @@ namespace VeterinaryClinic.Forms
 
         private void UpdateMove(object sender, EventArgs e)
         {
-            var bt = (Guna2Button)sender;
+            var bt = (Guna2ImageButton)sender;
 
             switch (bt.Name)
             {

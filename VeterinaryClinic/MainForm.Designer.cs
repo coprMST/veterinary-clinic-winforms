@@ -39,7 +39,6 @@ namespace VeterinaryClinic
             this.myNameLabel = new System.Windows.Forms.Label();
             this.goToAuthPage = new Guna.UI2.WinForms.Guna2Button();
             this.goToRegPage = new Guna.UI2.WinForms.Guna2Button();
-            this.goToProfilePage = new Guna.UI2.WinForms.Guna2Button();
             this.goToSerivcesPage = new Guna.UI2.WinForms.Guna2Button();
             this.goDataPage = new Guna.UI2.WinForms.Guna2Button();
             this.goHeadPage = new Guna.UI2.WinForms.Guna2Button();
@@ -67,7 +66,6 @@ namespace VeterinaryClinic
             this.menuPanel.Controls.Add(this.userPanel);
             this.menuPanel.Controls.Add(this.goToAuthPage);
             this.menuPanel.Controls.Add(this.goToRegPage);
-            this.menuPanel.Controls.Add(this.goToProfilePage);
             this.menuPanel.Controls.Add(this.goToSerivcesPage);
             this.menuPanel.Controls.Add(this.goDataPage);
             this.menuPanel.Controls.Add(this.goHeadPage);
@@ -214,29 +212,6 @@ namespace VeterinaryClinic
             this.goToRegPage.TextOffset = new System.Drawing.Point(0, -1);
             this.mainToolTip.SetToolTip(this.goToRegPage, "Переход на регистрацию в системе");
             // 
-            // goToProfilePage
-            // 
-            this.goToProfilePage.Animated = true;
-            this.goToProfilePage.BorderRadius = 12;
-            this.goToProfilePage.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
-            this.goToProfilePage.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(94)))), ((int)(((byte)(117)))));
-            this.goToProfilePage.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.goToProfilePage.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.goToProfilePage.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.goToProfilePage.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.goToProfilePage.Dock = System.Windows.Forms.DockStyle.Top;
-            this.goToProfilePage.FillColor = System.Drawing.Color.Transparent;
-            this.goToProfilePage.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
-            this.goToProfilePage.ForeColor = System.Drawing.Color.White;
-            this.goToProfilePage.ImageOffset = new System.Drawing.Point(-10, 0);
-            this.goToProfilePage.ImageSize = new System.Drawing.Size(25, 25);
-            this.goToProfilePage.Location = new System.Drawing.Point(12, 261);
-            this.goToProfilePage.Name = "goToProfilePage";
-            this.goToProfilePage.Size = new System.Drawing.Size(196, 45);
-            this.goToProfilePage.TabIndex = 28;
-            this.goToProfilePage.Text = "Профиль";
-            this.mainToolTip.SetToolTip(this.goToProfilePage, "Переход на страницу своего профиля");
-            // 
             // goToSerivcesPage
             // 
             this.goToSerivcesPage.Animated = true;
@@ -279,6 +254,7 @@ namespace VeterinaryClinic
             this.goDataPage.TabIndex = 21;
             this.goDataPage.Text = "Данные";
             this.mainToolTip.SetToolTip(this.goDataPage, "Переход на страницу данных");
+            this.goDataPage.Visible = false;
             this.goDataPage.Click += new System.EventHandler(this.GoDataPage_Click);
             // 
             // goHeadPage
@@ -480,7 +456,6 @@ namespace VeterinaryClinic
         private Guna.UI2.WinForms.Guna2ImageButton helperButton;
         internal Guna.UI2.WinForms.Guna2Button goHeadPage;
         internal Guna.UI2.WinForms.Guna2Button goDataPage;
-        internal Guna.UI2.WinForms.Guna2Button goToProfilePage;
         internal Guna.UI2.WinForms.Guna2Button goToSerivcesPage;
         internal Guna.UI2.WinForms.Guna2Button goToLogOut;
         internal Guna.UI2.WinForms.Guna2Panel userPanel;
