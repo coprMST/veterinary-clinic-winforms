@@ -103,17 +103,15 @@ namespace VeterinaryClinic.MiniForms
                 return Task.CompletedTask;
             }
 
-            switch (result2.DataTable.Rows[0][5].ToString())
-            {
-                case "1": AppUser.CustomerId = result2.DataTable.Rows[0][5].ToString(); break;
-                case "2": AppUser.EmployeeId = result2.DataTable.Rows[0][5].ToString(); break;
-            }
-
+            AppUser.AccountType = result2.DataTable.Rows[0][5].ToString();
             AppUser.AccountId = result2.DataTable.Rows[0][0].ToString();
-            AppUser.UserName = result2.DataTable.Rows[0][2] + " " + result2.DataTable.Rows[0][3].ToString().Substring(0, 1) + ".";
+            AppUser.FirstName = result2.DataTable.Rows[0][2].ToString();
+            AppUser.LastName = result2.DataTable.Rows[0][3].ToString();
             if (result2.DataTable.Rows[0][4] != DBNull.Value)
-                AppUser.UserName += result2.DataTable.Rows[0][4].ToString().Substring(0, 1) + ".";
-            myMessageBoxGoodAuth.Show($"С успешной авторизацией, {AppUser.UserName}");
+                AppUser.MiddleName = result2.DataTable.Rows[0][4].ToString();
+            myMessageBoxGoodAuth.Show($"С успешной авторизацией, {AppUser.GetName()}");
+
+
 
             void SetNullLogin()
             {
@@ -136,10 +134,19 @@ namespace VeterinaryClinic.MiniForms
             goToLogIn.Invoke(new Action(() =>
             {
                 Program.MainFormLink.goToAuthPage.Visible = false;
-                Program.MainFormLink.goToRegPage.Visible = false;
                 Program.MainFormLink.goToLogOut.Visible = true;
                 Program.MainFormLink.userPanel.Visible = true;
-                Program.MainFormLink.myNameLabel.Text = AppUser.UserName;
+                Program.MainFormLink.myNameLabel.Text = AppUser.GetName();
+
+                switch (AppUser.AccountType)
+                {
+                    case "1":
+                        Program.MainFormLink.goToCreateMeeting.Visible = true;
+                        break;
+                    case "2":
+                        Program.MainFormLink.goDataPage.Visible = true;
+                        break;
+                }
 
                 Close();
             }));
@@ -156,6 +163,11 @@ namespace VeterinaryClinic.MiniForms
         private void GoToCloseForm_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void helperButton_Click(object sender, EventArgs e)
+        {
+            Helper.Open();
         }
     }
 }

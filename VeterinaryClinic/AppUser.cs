@@ -9,11 +9,19 @@ namespace VeterinaryClinic
     internal class AppUser
     {
         internal static string AccountId { get; set; }
-        internal static string EmployeeId { get; set; }
-        internal static string CustomerId { get; set; }
-        internal static string UserName { get; set; }
+        internal static string AccountType { get; set; }
+        internal static string FirstName { get; set; }
+        internal static string LastName { get; set; }
+        internal static string MiddleName { get; set; }
         internal static int AmountRecordsInPage = 10;
 
+        internal static string GetName()
+        {
+            var userName = FirstName + " " + LastName.Substring(0, 1) + ".";
+            if (!IsNullOrEmpty(MiddleName))
+                userName += MiddleName.Substring(0, 1) + ".";
+            return userName;
+        }
 
         internal static bool AutoAuthUser()
         {
@@ -62,16 +70,12 @@ namespace VeterinaryClinic
                 return false;
             }
 
-            switch (result.DataTable.Rows[0][5].ToString())
-            {
-                case "1": CustomerId = result.DataTable.Rows[0][5].ToString(); break;
-                case "2": EmployeeId = result.DataTable.Rows[0][5].ToString(); break;
-            }
-
+            AccountType = result.DataTable.Rows[0][5].ToString();
             AccountId = result.DataTable.Rows[0][0].ToString();
-            UserName = result.DataTable.Rows[0][2] + " " + result.DataTable.Rows[0][3].ToString().Substring(0, 1) + ".";
+            FirstName = result.DataTable.Rows[0][2].ToString();
+            LastName = result.DataTable.Rows[0][3].ToString();
             if (result.DataTable.Rows[0][4] != DBNull.Value)
-                UserName += result.DataTable.Rows[0][4].ToString().Substring(0, 1) + ".";
+                MiddleName = result.DataTable.Rows[0][4].ToString();
 
             return true;
         }

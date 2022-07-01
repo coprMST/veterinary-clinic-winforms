@@ -1,5 +1,6 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
+using VeterinaryClinic.Forms;
 
 namespace VeterinaryClinic
 {
@@ -38,6 +39,37 @@ namespace VeterinaryClinic
 
                 miniForm.StartPosition = FormStartPosition.CenterParent;
                 miniForm.ShowDialog(thisMainForm);
+            }
+        }
+
+        public static void Shading2(ref DataForm thisDataForm, Form miniForm)
+        {
+            var bmp = new Bitmap(thisDataForm.ClientRectangle.Width, thisDataForm.ClientRectangle.Height);
+            using (var g = Graphics.FromImage(bmp))
+            {
+                g.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceOver;
+                g.CopyFromScreen(
+                    thisDataForm.PointToScreen(new Point(0, 0)),
+                    new Point(0, 0), thisDataForm.ClientRectangle.Size);
+                const double percent = 0.70;
+                var darken = Color.FromArgb((int)(255 * percent), Color.Black);
+                using (Brush brush = new SolidBrush(darken))
+                {
+                    g.FillRectangle(brush, thisDataForm.ClientRectangle);
+                }
+            }
+
+            using (var p = new Panel())
+            {
+                p.Location = new Point(0, 0);
+                p.Size = thisDataForm.ClientRectangle.Size;
+                p.BackgroundImage = bmp;
+
+                thisDataForm.Controls.Add(p);
+                p.BringToFront();
+
+                miniForm.StartPosition = FormStartPosition.CenterParent;
+                miniForm.ShowDialog(thisDataForm);
             }
         }
     }

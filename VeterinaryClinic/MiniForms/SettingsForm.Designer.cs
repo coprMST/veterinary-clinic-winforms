@@ -206,7 +206,8 @@ namespace VeterinaryClinic.MiniForms
             this.helperButton.PressedState.ImageSize = new System.Drawing.Size(42, 42);
             this.helperButton.Size = new System.Drawing.Size(60, 60);
             this.helperButton.TabIndex = 102;
-            this.mainToolTip.SetToolTip(this.helperButton, "Открыть руководство по данной странице");
+            this.mainToolTip.SetToolTip(this.helperButton, "Открыть руководство пользователя");
+            this.helperButton.Click += new System.EventHandler(this.helperButton_Click);
             // 
             // goToDefault
             // 

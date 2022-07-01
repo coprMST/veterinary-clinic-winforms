@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Windows.Forms;
 using Guna.UI2.WinForms;
+using VeterinaryClinic.MiniForms;
 
 namespace VeterinaryClinic.Forms
 {
     internal partial class DataForm : Form
     {
         private string _table = "Positions";
+        internal static string EditIndex { get; set; }
         private int _amountPage;
         private int _amountRecord;
         private int _nowPage = 1;
@@ -26,24 +28,34 @@ namespace VeterinaryClinic.Forms
             switch (_table)
             {
                 case "Positions":
-                    result1 = Data.ReturnDataTable($@"select count(PositionID) from Positions where PositionName like '%{seacher.Text.Trim()}%' or Salary like '%{seacher.Text.Trim()}%' or Responsibilities like '%{seacher.Text.Trim()}%'");
-                    result2 = Data.ReturnDataTable($@"select PositionID, PositionName, Salary, Responsibilities from Positions where PositionName like '%{seacher.Text.Trim()}%' or Salary like '%{seacher.Text.Trim()}%' or Responsibilities like '%{seacher.Text.Trim()}%' ORDER BY PositionName ASC OFFSET {_nowPage * AppUser.AmountRecordsInPage - AppUser.AmountRecordsInPage} ROWS FETCH NEXT {AppUser.AmountRecordsInPage} ROWS ONLY");
+                    result1 = Data.ReturnDataTable(
+                        $@"select count(PositionID) from Positions where PositionName like '%{seacher.Text.Trim()}%' or Salary like '%{seacher.Text.Trim()}%' or Responsibilities like '%{seacher.Text.Trim()}%'");
+                    result2 = Data.ReturnDataTable(
+                        $@"select PositionID, PositionName, Salary, Responsibilities from Positions where PositionName like '%{seacher.Text.Trim()}%' or Salary like '%{seacher.Text.Trim()}%' or Responsibilities like '%{seacher.Text.Trim()}%' ORDER BY PositionName ASC OFFSET {_nowPage * AppUser.AmountRecordsInPage - AppUser.AmountRecordsInPage} ROWS FETCH NEXT {AppUser.AmountRecordsInPage} ROWS ONLY");
                     break;
                 case "Employees":
-                    result1 = Data.ReturnDataTable($@"select count(E.EmployeeID) from Employees E left join Positions P on E.PositionID = P.PositionID left join Accounts A on E.AccountID = A.AccountID where Email like '%{seacher.Text.Trim()}%' or PhoneNumber like '%{seacher.Text.Trim()}%' or LastName like '%{seacher.Text.Trim()}%' or FirstName like '%{seacher.Text.Trim()}%' or MiddleName like '%{seacher.Text.Trim()}%' or PositionName like '%{seacher.Text.Trim()}%' or DateOfBith like '%{seacher.Text.Trim()}%' or DateOfEmployment like '%{seacher.Text.Trim()}%'");
-                    result2 = Data.ReturnDataTable($@"select E.AccountID, E.EmployeeID, Email, PhoneNumber, LastName, FirstName, MiddleName, PositionName, DateOfBith, DateOfEmployment from Employees E left join Positions P on E.PositionID = P.PositionID left join Accounts A on E.AccountID = A.AccountID where A.Email like '%{seacher.Text.Trim()}%' or PhoneNumber like '%{seacher.Text.Trim()}%' or LastName like '%{seacher.Text.Trim()}%' or FirstName like '%{seacher.Text.Trim()}%' or MiddleName like '%{seacher.Text.Trim()}%' or PositionName like '%{seacher.Text.Trim()}%' or DateOfBith like '%{seacher.Text.Trim()}%' or DateOfEmployment like '%{seacher.Text.Trim()}%' ORDER BY LastName ASC OFFSET {_nowPage * AppUser.AmountRecordsInPage - AppUser.AmountRecordsInPage} ROWS FETCH NEXT {AppUser.AmountRecordsInPage} ROWS ONLY");
+                    result1 = Data.ReturnDataTable(
+                        $@"select count(E.EmployeeID) from Employees E left join Positions P on E.PositionID = P.PositionID left join Accounts A on E.AccountID = A.AccountID where Email like '%{seacher.Text.Trim()}%' or PhoneNumber like '%{seacher.Text.Trim()}%' or LastName like '%{seacher.Text.Trim()}%' or FirstName like '%{seacher.Text.Trim()}%' or MiddleName like '%{seacher.Text.Trim()}%' or PositionName like '%{seacher.Text.Trim()}%' or DateOfBith like '%{seacher.Text.Trim()}%' or DateOfEmployment like '%{seacher.Text.Trim()}%'");
+                    result2 = Data.ReturnDataTable(
+                        $@"select E.AccountID, E.EmployeeID, Email, PhoneNumber, LastName, FirstName, MiddleName, PositionName, DateOfBith, DateOfEmployment from Employees E left join Positions P on E.PositionID = P.PositionID left join Accounts A on E.AccountID = A.AccountID where A.Email like '%{seacher.Text.Trim()}%' or PhoneNumber like '%{seacher.Text.Trim()}%' or LastName like '%{seacher.Text.Trim()}%' or FirstName like '%{seacher.Text.Trim()}%' or MiddleName like '%{seacher.Text.Trim()}%' or PositionName like '%{seacher.Text.Trim()}%' or DateOfBith like '%{seacher.Text.Trim()}%' or DateOfEmployment like '%{seacher.Text.Trim()}%' ORDER BY LastName ASC OFFSET {_nowPage * AppUser.AmountRecordsInPage - AppUser.AmountRecordsInPage} ROWS FETCH NEXT {AppUser.AmountRecordsInPage} ROWS ONLY");
                     break;
                 case "Customers":
-                    result1 = Data.ReturnDataTable($@"select count(CustomerID) from Customers С left join Accounts A on С.AccountID = A.AccountID where Email like '%{seacher.Text.Trim()}%' or PhoneNumber like '%{seacher.Text.Trim()}%' or LastName like '%{seacher.Text.Trim()}%' or FirstName like '%{seacher.Text.Trim()}%' or MiddleName like '%{seacher.Text.Trim()}%' or DateOfBith like '%{seacher.Text.Trim()}%'");
-                    result2 = Data.ReturnDataTable($@"select CustomerID, С.AccountID, Email, PhoneNumber, LastName, FirstName, MiddleName, DateOfBith from Customers С left join Accounts A on С.AccountID = A.AccountID where Email like '%{seacher.Text.Trim()}%' or PhoneNumber like '%{seacher.Text.Trim()}%' or LastName like '%{seacher.Text.Trim()}%' or FirstName like '%{seacher.Text.Trim()}%' or MiddleName like '%{seacher.Text.Trim()}%' or DateOfBith like '%{seacher.Text.Trim()}%' ORDER BY LastName ASC OFFSET {_nowPage * AppUser.AmountRecordsInPage - AppUser.AmountRecordsInPage} ROWS FETCH NEXT {AppUser.AmountRecordsInPage} ROWS ONLY");
+                    result1 = Data.ReturnDataTable(
+                        $@"select count(CustomerID) from Customers С left join Accounts A on С.AccountID = A.AccountID where Email like '%{seacher.Text.Trim()}%' or PhoneNumber like '%{seacher.Text.Trim()}%' or LastName like '%{seacher.Text.Trim()}%' or FirstName like '%{seacher.Text.Trim()}%' or MiddleName like '%{seacher.Text.Trim()}%' or DateOfBith like '%{seacher.Text.Trim()}%'");
+                    result2 = Data.ReturnDataTable(
+                        $@"select CustomerID, С.AccountID, Email, PhoneNumber, LastName, FirstName, MiddleName, DateOfBith from Customers С left join Accounts A on С.AccountID = A.AccountID where Email like '%{seacher.Text.Trim()}%' or PhoneNumber like '%{seacher.Text.Trim()}%' or LastName like '%{seacher.Text.Trim()}%' or FirstName like '%{seacher.Text.Trim()}%' or MiddleName like '%{seacher.Text.Trim()}%' or DateOfBith like '%{seacher.Text.Trim()}%' ORDER BY LastName ASC OFFSET {_nowPage * AppUser.AmountRecordsInPage - AppUser.AmountRecordsInPage} ROWS FETCH NEXT {AppUser.AmountRecordsInPage} ROWS ONLY");
                     break;
                 case "Services":
-                    result1 = Data.ReturnDataTable($@"select count(ServiceID) from Services where ServiceName like '%{seacher.Text.Trim()}%'");
-                    result2 = Data.ReturnDataTable($@"select ServiceID, ServiceName, InArchive from Services where ServiceName like '%{seacher.Text.Trim()}%' ORDER BY ServiceName ASC OFFSET {_nowPage * AppUser.AmountRecordsInPage - AppUser.AmountRecordsInPage} ROWS FETCH NEXT {AppUser.AmountRecordsInPage} ROWS ONLY");
+                    result1 = Data.ReturnDataTable(
+                        $@"select count(ServiceID) from Services where ServiceName like '%{seacher.Text.Trim()}%'");
+                    result2 = Data.ReturnDataTable(
+                        $@"select ServiceID, ServiceName, InArchive from Services where ServiceName like '%{seacher.Text.Trim()}%' ORDER BY ServiceName ASC OFFSET {_nowPage * AppUser.AmountRecordsInPage - AppUser.AmountRecordsInPage} ROWS FETCH NEXT {AppUser.AmountRecordsInPage} ROWS ONLY");
                     break;
                 case "ServiceTypes":
-                    result1 = Data.ReturnDataTable($@"select count(ST.ServiceTypeID) from Services S left join ServiceTypes ST on S.ServiceID = ST.ServiceID where ServiceName like '%{seacher.Text.Trim()}%' or ServiceTypeName like '%{seacher.Text.Trim()}%'");
-                    result2 = Data.ReturnDataTable($@"select ST.ServiceTypeID, ServiceName, ServiceTypeName, FirstPrice, SecondPrice, ST.InArchive from Services S left join ServiceTypes ST on S.ServiceID = ST.ServiceID where ServiceName like '%{seacher.Text.Trim()}%' or ServiceTypeName like '%{seacher.Text.Trim()}%' ORDER BY S.ServiceName ASC OFFSET {_nowPage * AppUser.AmountRecordsInPage - AppUser.AmountRecordsInPage} ROWS FETCH NEXT {AppUser.AmountRecordsInPage} ROWS ONLY");
+                    result1 = Data.ReturnDataTable(
+                        $@"select count(ST.ServiceTypeID) from Services S left join ServiceTypes ST on S.ServiceID = ST.ServiceID where ServiceName like '%{seacher.Text.Trim()}%' or ServiceTypeName like '%{seacher.Text.Trim()}%'");
+                    result2 = Data.ReturnDataTable(
+                        $@"select ST.ServiceTypeID, ServiceName, ServiceTypeName, FirstPrice, SecondPrice, ST.InArchive from Services S left join ServiceTypes ST on S.ServiceID = ST.ServiceID where ServiceName like '%{seacher.Text.Trim()}%' or ServiceTypeName like '%{seacher.Text.Trim()}%' ORDER BY S.ServiceName ASC OFFSET {_nowPage * AppUser.AmountRecordsInPage - AppUser.AmountRecordsInPage} ROWS FETCH NEXT {AppUser.AmountRecordsInPage} ROWS ONLY");
                     break;
             }
             // S.InArchive = 0 and ST.InArchive = 0
@@ -54,6 +66,7 @@ namespace VeterinaryClinic.Forms
                 mainTable.Rows.Clear();
                 return;
             }
+
             errorLabel.Visible = false;
 
             if (result2.HasZeroRows)
@@ -64,12 +77,15 @@ namespace VeterinaryClinic.Forms
                 seeLabel.Text = "";
                 return;
             }
+
             zeroRowsLabel.Visible = false;
 
             _amountRecord = Convert.ToInt32(result1.DataTable.Rows[0][0]);
 
             countRowsLabel.Text = $"Всего найдено {_amountRecord} записей";
-            seeLabel.Text = _amountRecord >= _nowPage * AppUser.AmountRecordsInPage ? $"показано с {_nowPage * AppUser.AmountRecordsInPage - AppUser.AmountRecordsInPage + 1} по {_nowPage * AppUser.AmountRecordsInPage} запись" : $"показано с {_nowPage * AppUser.AmountRecordsInPage - AppUser.AmountRecordsInPage + 1} по {_amountRecord} запись";
+            seeLabel.Text = _amountRecord >= _nowPage * AppUser.AmountRecordsInPage
+                ? $"показано с {_nowPage * AppUser.AmountRecordsInPage - AppUser.AmountRecordsInPage + 1} по {_nowPage * AppUser.AmountRecordsInPage} запись"
+                : $"показано с {_nowPage * AppUser.AmountRecordsInPage - AppUser.AmountRecordsInPage + 1} по {_amountRecord} запись";
 
             mainTable.ColumnCount = result2.DataTable.Columns.Count;
             mainTable.RowCount = result2.DataTable.Rows.Count;
@@ -94,6 +110,7 @@ namespace VeterinaryClinic.Forms
                         mainTable[2, i].Value = result2.DataTable.Rows[i][2] + "P";
                         mainTable[3, i].Value = result2.DataTable.Rows[i][3].ToString();
                     }
+
                     break;
 
                 case "Employees":
@@ -129,9 +146,12 @@ namespace VeterinaryClinic.Forms
                         mainTable[5, i].Value = result2.DataTable.Rows[i][5].ToString();
                         mainTable[6, i].Value = result2.DataTable.Rows[i][6].ToString();
                         mainTable[7, i].Value = result2.DataTable.Rows[i][7].ToString();
-                        mainTable[8, i].Value = Convert.ToDateTime(result2.DataTable.Rows[i][8].ToString()).ToShortDateString();
-                        mainTable[9, i].Value = Convert.ToDateTime(result2.DataTable.Rows[i][9].ToString()).ToShortDateString();
+                        mainTable[8, i].Value = Convert.ToDateTime(result2.DataTable.Rows[i][8].ToString())
+                            .ToShortDateString();
+                        mainTable[9, i].Value = Convert.ToDateTime(result2.DataTable.Rows[i][9].ToString())
+                            .ToShortDateString();
                     }
+
                     break;
 
                 case "Customers":
@@ -162,8 +182,10 @@ namespace VeterinaryClinic.Forms
                         mainTable[4, i].Value = result2.DataTable.Rows[i][4].ToString();
                         mainTable[5, i].Value = result2.DataTable.Rows[i][5].ToString();
                         mainTable[6, i].Value = result2.DataTable.Rows[i][6].ToString();
-                        mainTable[7, i].Value = Convert.ToDateTime(result2.DataTable.Rows[i][7].ToString()).ToShortDateString();
+                        mainTable[7, i].Value = Convert.ToDateTime(result2.DataTable.Rows[i][7].ToString())
+                            .ToShortDateString();
                     }
+
                     break;
 
                 case "Services":
@@ -181,6 +203,7 @@ namespace VeterinaryClinic.Forms
                         mainTable[1, i].Value = result2.DataTable.Rows[i][1].ToString();
                         mainTable[2, i].Value = result2.DataTable.Rows[i][2].ToString() == "True" ? "Да" : "Нет";
                     }
+
                     break;
 
                 case "ServiceTypes":
@@ -201,12 +224,15 @@ namespace VeterinaryClinic.Forms
                         mainTable[0, i].Value = result2.DataTable.Rows[i][0].ToString();
                         mainTable[1, i].Value = result2.DataTable.Rows[i][1].ToString();
                         mainTable[2, i].Value = result2.DataTable.Rows[i][2].ToString();
-                        mainTable[3, i].Value = result2.DataTable.Rows[i][4] == DBNull.Value ? result2.DataTable.Rows[i][3] + "P" : result2.DataTable.Rows[i][3] + " - " + result2.DataTable.Rows[i][4] + "P";
+                        mainTable[3, i].Value = result2.DataTable.Rows[i][4] == DBNull.Value
+                            ? result2.DataTable.Rows[i][3] + "P"
+                            : result2.DataTable.Rows[i][3] + " - " + result2.DataTable.Rows[i][4] + "P";
                         mainTable[4, i].Value = result2.DataTable.Rows[i][5].ToString() == "True" ? "Да" : "Нет";
                     }
+
                     break;
             }
-            
+
             _amountPage = _amountRecord / AppUser.AmountRecordsInPage;
             if (Convert.ToDouble(_amountRecord % AppUser.AmountRecordsInPage) > 0)
                 _amountPage++;
@@ -225,7 +251,7 @@ namespace VeterinaryClinic.Forms
 
         private void UpdateMove(object sender, EventArgs e)
         {
-            var bt = (Guna2ImageButton)sender;
+            var bt = (Guna2ImageButton) sender;
 
             switch (bt.Name)
             {
@@ -262,7 +288,7 @@ namespace VeterinaryClinic.Forms
 
         private void Seacher_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar != (char)Keys.Enter) return;
+            if (e.KeyChar != (char) Keys.Enter) return;
 
             _nowPage = 1;
             GoUpdateDataGrid();
@@ -271,7 +297,7 @@ namespace VeterinaryClinic.Forms
         private void MovePage(object sender, EventArgs e)
         {
             var bt = (Guna2Button) sender;
-            
+
             switch (bt.Name)
             {
                 case "goToOpenPositionsTable":
@@ -299,19 +325,20 @@ namespace VeterinaryClinic.Forms
         {
             switch (_table)
             {
-                case "Positions": 
+                case "Positions":
                     var id = mainTable[0, mainTable.SelectedCells[0].RowIndex].Value.ToString();
                     var name = mainTable[1, mainTable.SelectedCells[0].RowIndex].Value.ToString();
 
                     var res = myMessageBoxQuestion.Show($@"Вы точно хотите удалить должность {name}?");
-                    
+
                     if (res != DialogResult.Yes) return;
 
                     var result = Data.ReturnDataTable($@"delete from Positions where PositionID = '{id}'");
 
                     if (result.HasError && result.ErrorText != "Невозможно найти таблицу 0.")
                     {
-                        myMessageBoxError.Show($@"Не удалось удалить должность {name}." + Environment.NewLine + result.ErrorText);
+                        myMessageBoxError.Show($@"Не удалось удалить должность {name}." + Environment.NewLine +
+                                               result.ErrorText);
                         return;
                     }
 
@@ -347,6 +374,27 @@ namespace VeterinaryClinic.Forms
             }
 
             GoUpdateDataGrid();
+        }
+
+        private void GoToEdit_Click(object sender, EventArgs e)
+        {
+            switch (_table)
+            {
+                case "Positions":
+                    EditIndex = mainTable[0, mainTable.SelectedCells[0].RowIndex].Value.ToString();
+                    OpenMiniForm.Shading(ref Program.MainFormLink, new EditPosition());
+                    break;
+            }
+        }
+
+        private void goToAdd_Click(object sender, EventArgs e)
+        {
+            switch (_table)
+            {
+                case "Positions":
+                    OpenMiniForm.Shading(ref Program.MainFormLink, new AddPositionForm());
+                    break;
+            }
         }
     }
 }

@@ -161,7 +161,7 @@ namespace VeterinaryClinic.Forms
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(31, 11);
+            this.label3.Location = new System.Drawing.Point(28, 2);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(388, 22);
             this.label3.TabIndex = 87;

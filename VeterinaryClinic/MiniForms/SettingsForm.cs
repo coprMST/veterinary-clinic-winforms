@@ -79,5 +79,10 @@ namespace VeterinaryClinic.MiniForms
             if ((e.KeyChar >= 'A' && e.KeyChar <= 'Z') || (e.KeyChar >= 'А' && e.KeyChar <= 'Я') || (e.KeyChar >= 'а' && e.KeyChar <= 'я') || (e.KeyChar >= 1 && e.KeyChar <= 31) || (e.KeyChar >= 'a' && e.KeyChar <= 'z') || (e.KeyChar >= '0' && e.KeyChar <= '9') || e.KeyChar == '-' || (e.KeyChar >= 33 && e.KeyChar <= 38) || (e.KeyChar >= 40 && e.KeyChar <= 126) || e.KeyChar == (char)Keys.Back) { }
             else e.Handled = true;
         }
+
+        private void helperButton_Click(object sender, EventArgs e)
+        {
+            Helper.Open();
+        }
     }
 }

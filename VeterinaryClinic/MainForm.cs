@@ -41,6 +41,17 @@ namespace VeterinaryClinic
                 helperButton.BackColor = Color.FromArgb(14, 116, 144);
             else
                 helperButton.BackColor = Color.FromArgb(243, 244, 246);
+
+
+            switch (AppUser.AccountType)
+            {
+                case "1":
+                    goToCreateMeeting.Visible = true;
+                    break;
+                case "2":
+                    goDataPage.Visible = true;
+                    break;
+            }
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -48,15 +59,13 @@ namespace VeterinaryClinic
             if (AppUser.AutoAuthUser())
             {
                 goToAuthPage.Visible = false;
-                goToRegPage.Visible = false;
                 goToLogOut.Visible = true;
                 userPanel.Visible = true;
-                myNameLabel.Text = AppUser.UserName;
+                myNameLabel.Text = AppUser.GetName();
             }
             else
             {
                 goToAuthPage.Visible = true;
-                goToRegPage.Visible = true;
                 goToLogOut.Visible = false;
                 userPanel.Visible = false;
             }
@@ -75,15 +84,13 @@ namespace VeterinaryClinic
         private void goToSettings_Click(object sender, EventArgs e)
         {
             Text = "Петан - Настройки";
-            var mainForm = this;
-            OpenMiniForm.Shading(ref mainForm, new SettingsForm());
+            OpenMiniForm.Shading(ref Program.MainFormLink, new SettingsForm());
         }
 
         private void GoToAuth_Click(object sender, EventArgs e)
         {
             Text = "Петан - Авторизация";
-            var mainForm = this;
-            OpenMiniForm.Shading(ref mainForm, new AuthForm());
+            OpenMiniForm.Shading(ref Program.MainFormLink, new AuthForm());
         }
 
         private void goToSerivcesPage_Click(object sender, EventArgs e)
@@ -162,10 +169,33 @@ namespace VeterinaryClinic
         private void goToLogOut_Click(object sender, EventArgs e)
         {
             goToAuthPage.Visible = true;
-            goToRegPage.Visible = true;
             goToLogOut.Visible = false;
             userPanel.Visible = false;
             AppUser.DeleteUserFile();
+            AppUser.AccountType = null;
+
+            goToCreateMeeting.Visible = false;
+            goDataPage.Visible = false;
+
+            if (goToCreateMeeting.Checked || goDataPage.Checked)
+            {
+                goHeadPage.Checked = true;
+                Text = "Петан - Главная";
+                OpenChildForm(new HeadForm());
+                goToCreateMeeting.Visible = false;
+                goDataPage.Visible = false;
+            }
+            else
+            {
+                goToCreateMeeting.Visible = false;
+                goDataPage.Visible = false;
+            }
+            
+        }
+
+        private void HelperButton_Click(object sender, EventArgs e)
+        {
+            Helper.Open();
         }
 
         private void headerPanel_MouseDown(object sender, MouseEventArgs e)

@@ -1,6 +1,3 @@
---drop database VeterinaryClinicDB
---go
-
 create database VeterinaryClinicDB
 go
 
@@ -31,11 +28,12 @@ go
 
 insert into [dbo].[Positions] ([PositionName], [Salary], [Responsibilities])
 values
-('Врач', '55000', 'Лечение и назначение лечения животным'),
 ('Старший врач', '35000', 'Проведение сложных медицинских работ и несение ответственности за медицинских работников'),
 ('Консультант', '30000', 'Консультация клиентов по поводу работы с животными'),
 ('Администратор', '60000', 'Поддержание работы информационной системы')
 go
+
+insert into [dbo].[Positions] ([PositionName], [Salary], [Responsibilities]) values ('{positionNameTextBox.Text.Trim()}', '4', '{IsNullOrEmpty(salaryTextBox.Text.Trim())}')
 
 create table [dbo].[AccountTypes] (
 	[AccountTypeID] tinyint identity primary key,
@@ -96,7 +94,7 @@ go
 create table [dbo].[Meetings] (
 	[MeetingID] integer identity primary key,
 	[CustomerID] uniqueidentifier foreign key references [dbo].[Customers]([CustomerID]) on delete cascade on update cascade not null,
-	[DateTime] datetime not null,
+	[DateTime] datetime2(0) not null,
 	[DateOfCreation] integer default [dbo].[UNIX_TIMESTAMP](sysdatetime()) not null,
 	[Comment] varchar(512) null,
 )
@@ -201,6 +199,15 @@ as
 	declare @check bit
 	set @check = case when exists (select PhoneNumber, Email from Accounts where PhoneNumber = @phone or Email = @email) then 1 else 0 end
 	select iif(@check = 1, 1, 0)
+go
+
+create procedure [dbo].[AddNewMeeting] (@accountId uniqueidentifier, @datetime datetime2, @comment varchar(512))
+as
+	declare @customerID uniqueidentifier
+	set @customerID = (select C.CustomerID from Accounts A left join Customers C on A.AccountID = C.AccountID where A.AccountID = @accountId)
+	
+	insert into Meetings(CustomerID, [DateTime], [Comment])
+	values (@customerID, @datetime, @comment)
 go
 
 -- Хранимая процедура, добавляющая нового клиента (для регистрации)
@@ -450,14 +457,3 @@ exec [dbo].[AddNewEmployee] 'Набатников', 'Марк', 'Федорович', '02.01.1994', '79
 exec [dbo].[AddNewEmployee] 'Гачегова', 'Мария', 'Павловна', '15.07.1969', '79868816248', 'mariya15071969@ya.ru', '11f52bf94'
 exec [dbo].[AddNewEmployee] 'Ратникова', 'Елизавета', 'Захаровна', '12.11.1983', '79961825948', 'elizaveta12111983@rambler.ru', '35f7ee252'
 go
-
-
-
-
-
-
-delete from Positions where PositionID = '6'
-
-select count(ServiceID) from Services where ServiceName like '%{seacher.Text.Trim()}%'
-
-

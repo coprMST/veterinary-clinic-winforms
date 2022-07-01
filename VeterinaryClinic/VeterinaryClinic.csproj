@@ -77,6 +77,9 @@
     </StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EasyDox, Version=2.0.39.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\EasyDox.2.0.39\lib\EasyDox.dll</HintPath>
+    </Reference>
     <Reference Include="Guna.UI2, Version=2.0.3.2, Culture=neutral, PublicKeyToken=4015e4865bda28a4, processorArchitecture=MSIL">
       <HintPath>..\packages\Guna.UI2.WinForms.2.0.3.2\lib\net40\Guna.UI2.dll</HintPath>
     </Reference>
@@ -107,6 +110,12 @@
       <DependentUpon>ServicesForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Helper.cs" />
+    <Compile Include="MiniForms\AddPositionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MiniForms\AddPositionForm.Designer.cs">
+      <DependentUpon>AddPositionForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MiniForms\AuthForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -152,6 +161,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ServicesForm.resx">
       <DependentUpon>ServicesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MiniForms\AddPositionForm.resx">
+      <DependentUpon>AddPositionForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MiniForms\AuthForm.resx">
       <DependentUpon>AuthForm.cs</DependentUpon>
