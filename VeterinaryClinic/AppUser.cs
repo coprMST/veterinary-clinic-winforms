@@ -17,7 +17,7 @@ namespace VeterinaryClinic
 
         internal static string GetName()
         {
-            var userName = FirstName + " " + LastName.Substring(0, 1) + ".";
+            var userName = LastName + " " + FirstName.Substring(0, 1) + ".";
             if (!IsNullOrEmpty(MiddleName))
                 userName += MiddleName.Substring(0, 1) + ".";
             return userName;
@@ -72,8 +72,8 @@ namespace VeterinaryClinic
 
             AccountType = result.DataTable.Rows[0][5].ToString();
             AccountId = result.DataTable.Rows[0][0].ToString();
-            FirstName = result.DataTable.Rows[0][2].ToString();
-            LastName = result.DataTable.Rows[0][3].ToString();
+            LastName = result.DataTable.Rows[0][2].ToString();
+            FirstName = result.DataTable.Rows[0][3].ToString();
             if (result.DataTable.Rows[0][4] != DBNull.Value)
                 MiddleName = result.DataTable.Rows[0][4].ToString();
 

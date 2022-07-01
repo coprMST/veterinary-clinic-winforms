@@ -140,6 +140,12 @@
     <Compile Include="MiniForms\EditPositionForm.Designer.cs">
       <DependentUpon>EditPositionForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="MiniForms\RegForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MiniForms\RegForm.Designer.cs">
+      <DependentUpon>RegForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MiniForms\SettingsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -176,6 +182,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MiniForms\EditPositionForm.resx">
       <DependentUpon>EditPositionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MiniForms\RegForm.resx">
+      <DependentUpon>RegForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MiniForms\SettingsForm.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>

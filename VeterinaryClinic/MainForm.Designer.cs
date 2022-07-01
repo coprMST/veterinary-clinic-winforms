@@ -31,7 +31,6 @@ namespace VeterinaryClinic
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.menuPanel = new Guna.UI2.WinForms.Guna2Panel();
-            this.goToCreateMeeting = new Guna.UI2.WinForms.Guna2Button();
             this.goToSettingsPage = new Guna.UI2.WinForms.Guna2Button();
             this.goToLogOut = new Guna.UI2.WinForms.Guna2Button();
             this.userPanel = new Guna.UI2.WinForms.Guna2Panel();
@@ -39,6 +38,8 @@ namespace VeterinaryClinic
             this.guna2CirclePictureBox1 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             this.myNameLabel = new System.Windows.Forms.Label();
             this.goToAuthPage = new Guna.UI2.WinForms.Guna2Button();
+            this.goToReg = new Guna.UI2.WinForms.Guna2Button();
+            this.goToCreateMeeting = new Guna.UI2.WinForms.Guna2Button();
             this.goToSerivcesPage = new Guna.UI2.WinForms.Guna2Button();
             this.goDataPage = new Guna.UI2.WinForms.Guna2Button();
             this.goHeadPage = new Guna.UI2.WinForms.Guna2Button();
@@ -61,11 +62,12 @@ namespace VeterinaryClinic
             // menuPanel
             // 
             this.menuPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(116)))), ((int)(((byte)(144)))));
-            this.menuPanel.Controls.Add(this.goToCreateMeeting);
             this.menuPanel.Controls.Add(this.goToSettingsPage);
             this.menuPanel.Controls.Add(this.goToLogOut);
             this.menuPanel.Controls.Add(this.userPanel);
             this.menuPanel.Controls.Add(this.goToAuthPage);
+            this.menuPanel.Controls.Add(this.goToReg);
+            this.menuPanel.Controls.Add(this.goToCreateMeeting);
             this.menuPanel.Controls.Add(this.goToSerivcesPage);
             this.menuPanel.Controls.Add(this.goDataPage);
             this.menuPanel.Controls.Add(this.goHeadPage);
@@ -76,30 +78,6 @@ namespace VeterinaryClinic
             this.menuPanel.Padding = new System.Windows.Forms.Padding(12);
             this.menuPanel.Size = new System.Drawing.Size(220, 768);
             this.menuPanel.TabIndex = 1;
-            this.menuPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.MenuPanel_Paint);
-            // 
-            // goToCreateMeeting
-            // 
-            this.goToCreateMeeting.Animated = true;
-            this.goToCreateMeeting.BorderRadius = 12;
-            this.goToCreateMeeting.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
-            this.goToCreateMeeting.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(94)))), ((int)(((byte)(117)))));
-            this.goToCreateMeeting.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.goToCreateMeeting.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.goToCreateMeeting.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.goToCreateMeeting.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.goToCreateMeeting.Dock = System.Windows.Forms.DockStyle.Top;
-            this.goToCreateMeeting.FillColor = System.Drawing.Color.Transparent;
-            this.goToCreateMeeting.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
-            this.goToCreateMeeting.ForeColor = System.Drawing.Color.White;
-            this.goToCreateMeeting.Location = new System.Drawing.Point(12, 261);
-            this.goToCreateMeeting.Name = "goToCreateMeeting";
-            this.goToCreateMeeting.Size = new System.Drawing.Size(196, 45);
-            this.goToCreateMeeting.TabIndex = 37;
-            this.goToCreateMeeting.Text = "Запись";
-            this.mainToolTip.SetToolTip(this.goToCreateMeeting, "Переход на страницу данных");
-            this.goToCreateMeeting.Visible = false;
-            this.goToCreateMeeting.Click += new System.EventHandler(this.goToCreateMeeting_Click);
             // 
             // goToSettingsPage
             // 
@@ -114,10 +92,10 @@ namespace VeterinaryClinic
             this.goToSettingsPage.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
             this.goToSettingsPage.ForeColor = System.Drawing.Color.White;
             this.goToSettingsPage.ImageOffset = new System.Drawing.Point(-10, 0);
-            this.goToSettingsPage.Location = new System.Drawing.Point(12, 538);
+            this.goToSettingsPage.Location = new System.Drawing.Point(12, 493);
             this.goToSettingsPage.Name = "goToSettingsPage";
             this.goToSettingsPage.Size = new System.Drawing.Size(196, 45);
-            this.goToSettingsPage.TabIndex = 36;
+            this.goToSettingsPage.TabIndex = 42;
             this.goToSettingsPage.Text = "Настройки";
             this.goToSettingsPage.TextOffset = new System.Drawing.Point(0, -1);
             this.mainToolTip.SetToolTip(this.goToSettingsPage, "Переход на страницу настройек");
@@ -136,10 +114,10 @@ namespace VeterinaryClinic
             this.goToLogOut.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
             this.goToLogOut.ForeColor = System.Drawing.Color.White;
             this.goToLogOut.ImageOffset = new System.Drawing.Point(-10, 0);
-            this.goToLogOut.Location = new System.Drawing.Point(12, 583);
+            this.goToLogOut.Location = new System.Drawing.Point(12, 538);
             this.goToLogOut.Name = "goToLogOut";
             this.goToLogOut.Size = new System.Drawing.Size(196, 45);
-            this.goToLogOut.TabIndex = 35;
+            this.goToLogOut.TabIndex = 41;
             this.goToLogOut.Text = "Выйти";
             this.goToLogOut.TextOffset = new System.Drawing.Point(0, -1);
             this.mainToolTip.SetToolTip(this.goToLogOut, "Выйти из системы");
@@ -152,10 +130,10 @@ namespace VeterinaryClinic
             this.userPanel.Controls.Add(this.guna2CirclePictureBox1);
             this.userPanel.Controls.Add(this.myNameLabel);
             this.userPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.userPanel.Location = new System.Drawing.Point(12, 628);
+            this.userPanel.Location = new System.Drawing.Point(12, 583);
             this.userPanel.Name = "userPanel";
             this.userPanel.Size = new System.Drawing.Size(196, 83);
-            this.userPanel.TabIndex = 34;
+            this.userPanel.TabIndex = 40;
             this.userPanel.Visible = false;
             // 
             // label1
@@ -205,14 +183,59 @@ namespace VeterinaryClinic
             this.goToAuthPage.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
             this.goToAuthPage.ForeColor = System.Drawing.Color.White;
             this.goToAuthPage.ImageOffset = new System.Drawing.Point(-10, 0);
-            this.goToAuthPage.Location = new System.Drawing.Point(12, 711);
+            this.goToAuthPage.Location = new System.Drawing.Point(12, 666);
             this.goToAuthPage.Name = "goToAuthPage";
             this.goToAuthPage.Size = new System.Drawing.Size(196, 45);
-            this.goToAuthPage.TabIndex = 33;
+            this.goToAuthPage.TabIndex = 39;
             this.goToAuthPage.Text = "Авторизоваться";
             this.goToAuthPage.TextOffset = new System.Drawing.Point(0, -1);
             this.mainToolTip.SetToolTip(this.goToAuthPage, "Переход на авторизацию в системе");
             this.goToAuthPage.Click += new System.EventHandler(this.GoToAuth_Click);
+            // 
+            // goToReg
+            // 
+            this.goToReg.BorderRadius = 12;
+            this.goToReg.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(94)))), ((int)(((byte)(117)))));
+            this.goToReg.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.goToReg.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.goToReg.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.goToReg.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.goToReg.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.goToReg.FillColor = System.Drawing.Color.Transparent;
+            this.goToReg.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
+            this.goToReg.ForeColor = System.Drawing.Color.White;
+            this.goToReg.ImageOffset = new System.Drawing.Point(-10, 0);
+            this.goToReg.Location = new System.Drawing.Point(12, 711);
+            this.goToReg.Name = "goToReg";
+            this.goToReg.Size = new System.Drawing.Size(196, 45);
+            this.goToReg.TabIndex = 38;
+            this.goToReg.Text = "Зарегистрироваться";
+            this.goToReg.TextOffset = new System.Drawing.Point(0, -1);
+            this.mainToolTip.SetToolTip(this.goToReg, "Переход на авторизацию в системе");
+            this.goToReg.Click += new System.EventHandler(this.goToReg_Click);
+            // 
+            // goToCreateMeeting
+            // 
+            this.goToCreateMeeting.Animated = true;
+            this.goToCreateMeeting.BorderRadius = 12;
+            this.goToCreateMeeting.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
+            this.goToCreateMeeting.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(94)))), ((int)(((byte)(117)))));
+            this.goToCreateMeeting.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.goToCreateMeeting.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.goToCreateMeeting.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.goToCreateMeeting.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.goToCreateMeeting.Dock = System.Windows.Forms.DockStyle.Top;
+            this.goToCreateMeeting.FillColor = System.Drawing.Color.Transparent;
+            this.goToCreateMeeting.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
+            this.goToCreateMeeting.ForeColor = System.Drawing.Color.White;
+            this.goToCreateMeeting.Location = new System.Drawing.Point(12, 261);
+            this.goToCreateMeeting.Name = "goToCreateMeeting";
+            this.goToCreateMeeting.Size = new System.Drawing.Size(196, 45);
+            this.goToCreateMeeting.TabIndex = 37;
+            this.goToCreateMeeting.Text = "Запись";
+            this.mainToolTip.SetToolTip(this.goToCreateMeeting, "Переход на страницу данных");
+            this.goToCreateMeeting.Visible = false;
+            this.goToCreateMeeting.Click += new System.EventHandler(this.goToCreateMeeting_Click);
             // 
             // goToSerivcesPage
             // 
@@ -307,7 +330,6 @@ namespace VeterinaryClinic
             this.formPanel.Name = "formPanel";
             this.formPanel.Size = new System.Drawing.Size(1008, 768);
             this.formPanel.TabIndex = 2;
-            this.formPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.FormPanel_Paint);
             // 
             // helperButton
             // 
@@ -460,14 +482,15 @@ namespace VeterinaryClinic
         internal Guna.UI2.WinForms.Guna2Button goHeadPage;
         internal Guna.UI2.WinForms.Guna2Button goDataPage;
         internal Guna.UI2.WinForms.Guna2Button goToSerivcesPage;
+        internal Guna.UI2.WinForms.Guna2Button goToCreateMeeting;
+        internal Guna.UI2.WinForms.Guna2Button goToSettingsPage;
         internal Guna.UI2.WinForms.Guna2Button goToLogOut;
         internal Guna.UI2.WinForms.Guna2Panel userPanel;
-        internal Guna.UI2.WinForms.Guna2Button goToSettingsPage;
-        internal System.Windows.Forms.Label myNameLabel;
-        internal Guna.UI2.WinForms.Guna2Button goToAuthPage;
         internal System.Windows.Forms.Label label1;
         private Guna.UI2.WinForms.Guna2CirclePictureBox guna2CirclePictureBox1;
-        internal Guna.UI2.WinForms.Guna2Button goToCreateMeeting;
+        internal System.Windows.Forms.Label myNameLabel;
+        internal Guna.UI2.WinForms.Guna2Button goToAuthPage;
+        internal Guna.UI2.WinForms.Guna2Button goToReg;
     }
 }
 

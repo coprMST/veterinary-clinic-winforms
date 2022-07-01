@@ -35,14 +35,14 @@
             this.loginTextBox = new Guna.UI2.WinForms.Guna2TextBox();
             this.goToCloseForm = new Guna.UI2.WinForms.Guna2Button();
             this.helperButton = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.MainCheckBox = new Guna.UI2.WinForms.Guna2CustomCheckBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.myMessageBoxGoodAuth = new Guna.UI2.WinForms.Guna2MessageDialog();
             this.myMessageBoxWarning = new Guna.UI2.WinForms.Guna2MessageDialog();
             this.myMessageBoxError = new Guna.UI2.WinForms.Guna2MessageDialog();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.MainCheckBox = new Guna.UI2.WinForms.Guna2CustomCheckBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -110,7 +110,7 @@
             this.passwordTextBox.TextOffset = new System.Drawing.Point(4, 0);
             this.mainToolTip.SetToolTip(this.passwordTextBox, "Введите пароль для входа");
             this.passwordTextBox.IconRightClick += new System.EventHandler(this.PasswordTextBox_IconRightClick);
-            this.passwordTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressValidate);
+            this.passwordTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.passwordTextBox_KeyPress);
             // 
             // loginTextBox
             // 
@@ -188,6 +188,37 @@
             this.mainToolTip.SetToolTip(this.helperButton, "Открыть руководство пользователя");
             this.helperButton.Click += new System.EventHandler(this.helperButton_Click);
             // 
+            // MainCheckBox
+            // 
+            this.MainCheckBox.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(116)))), ((int)(((byte)(144)))));
+            this.MainCheckBox.CheckedState.BorderRadius = 2;
+            this.MainCheckBox.CheckedState.BorderThickness = 0;
+            this.MainCheckBox.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(116)))), ((int)(((byte)(144)))));
+            this.MainCheckBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.MainCheckBox.Location = new System.Drawing.Point(70, 304);
+            this.MainCheckBox.Name = "MainCheckBox";
+            this.MainCheckBox.Size = new System.Drawing.Size(24, 24);
+            this.MainCheckBox.TabIndex = 84;
+            this.mainToolTip.SetToolTip(this.MainCheckBox, "Запомнить меня после выхода из приложения");
+            this.MainCheckBox.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(48)))), ((int)(((byte)(100)))));
+            this.MainCheckBox.UncheckedState.BorderRadius = 2;
+            this.MainCheckBox.UncheckedState.BorderThickness = 1;
+            this.MainCheckBox.UncheckedState.FillColor = System.Drawing.Color.Transparent;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.label3.Location = new System.Drawing.Point(96, 306);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(136, 20);
+            this.label3.TabIndex = 85;
+            this.label3.Text = "Запомнить меня";
+            this.mainToolTip.SetToolTip(this.label3, "Запомнить меня после выхода из приложения");
+            this.label3.Click += new System.EventHandler(this.CheckBox_Click);
+            // 
             // myMessageBoxGoodAuth
             // 
             this.myMessageBoxGoodAuth.Buttons = Guna.UI2.WinForms.MessageDialogButtons.OK;
@@ -248,37 +279,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(493, 35);
             this.panel1.TabIndex = 91;
-            // 
-            // MainCheckBox
-            // 
-            this.MainCheckBox.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(116)))), ((int)(((byte)(144)))));
-            this.MainCheckBox.CheckedState.BorderRadius = 2;
-            this.MainCheckBox.CheckedState.BorderThickness = 0;
-            this.MainCheckBox.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(116)))), ((int)(((byte)(144)))));
-            this.MainCheckBox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.MainCheckBox.Location = new System.Drawing.Point(70, 304);
-            this.MainCheckBox.Name = "MainCheckBox";
-            this.MainCheckBox.Size = new System.Drawing.Size(24, 24);
-            this.MainCheckBox.TabIndex = 84;
-            this.mainToolTip.SetToolTip(this.MainCheckBox, "Запомнить меня после выхода из приложения");
-            this.MainCheckBox.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(48)))), ((int)(((byte)(100)))));
-            this.MainCheckBox.UncheckedState.BorderRadius = 2;
-            this.MainCheckBox.UncheckedState.BorderThickness = 1;
-            this.MainCheckBox.UncheckedState.FillColor = System.Drawing.Color.Transparent;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.label3.Location = new System.Drawing.Point(96, 306);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(136, 20);
-            this.label3.TabIndex = 85;
-            this.label3.Text = "Запомнить меня";
-            this.mainToolTip.SetToolTip(this.label3, "Запомнить меня после выхода из приложения");
-            this.label3.Click += new System.EventHandler(this.CheckBox_Click);
             // 
             // AuthForm
             // 

@@ -61,6 +61,7 @@ namespace VeterinaryClinic
                 goToAuthPage.Visible = false;
                 goToLogOut.Visible = true;
                 userPanel.Visible = true;
+                goToReg.Visible = false;
                 myNameLabel.Text = AppUser.GetName();
             }
             else
@@ -87,6 +88,12 @@ namespace VeterinaryClinic
             OpenMiniForm.Shading(ref Program.MainFormLink, new SettingsForm());
         }
 
+        private void goToReg_Click(object sender, EventArgs e)
+        {
+            Text = "Петан - Регистрация";
+            OpenMiniForm.Shading(ref Program.MainFormLink, new RegForm());
+        }
+
         private void GoToAuth_Click(object sender, EventArgs e)
         {
             Text = "Петан - Авторизация";
@@ -109,24 +116,6 @@ namespace VeterinaryClinic
         {
             Text = "Петан - Данные";
             OpenChildForm(new DataForm());
-        }
-
-        private void MenuPanel_Paint(object sender, PaintEventArgs e)
-        {
-            ControlPaint.DrawBorder(e.Graphics, menuPanel.ClientRectangle,
-                _borderColor, 2, ButtonBorderStyle.Solid,
-                _borderColor, 2, ButtonBorderStyle.Solid,
-                _borderColor, 0, ButtonBorderStyle.Solid,
-                _borderColor, 2, ButtonBorderStyle.Solid);
-        }
-
-        private void FormPanel_Paint(object sender, PaintEventArgs e)
-        {
-            ControlPaint.DrawBorder(e.Graphics, formPanel.ClientRectangle,
-                _borderColor, 0, ButtonBorderStyle.Solid,
-                _borderColor, 2, ButtonBorderStyle.Solid,
-                _borderColor, 2, ButtonBorderStyle.Solid,
-                _borderColor, 2, ButtonBorderStyle.Solid);
         }
 
         private void GoToCloseApp_Click(object sender, EventArgs e)

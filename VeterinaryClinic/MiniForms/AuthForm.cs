@@ -105,13 +105,12 @@ namespace VeterinaryClinic.MiniForms
 
             AppUser.AccountType = result2.DataTable.Rows[0][5].ToString();
             AppUser.AccountId = result2.DataTable.Rows[0][0].ToString();
-            AppUser.FirstName = result2.DataTable.Rows[0][2].ToString();
-            AppUser.LastName = result2.DataTable.Rows[0][3].ToString();
+            AppUser.LastName = result2.DataTable.Rows[0][2].ToString();
+            AppUser.FirstName = result2.DataTable.Rows[0][3].ToString();
             if (result2.DataTable.Rows[0][4] != DBNull.Value)
                 AppUser.MiddleName = result2.DataTable.Rows[0][4].ToString();
-            myMessageBoxGoodAuth.Show($"С успешной авторизацией, {AppUser.GetName()}");
 
-
+            myMessageBoxGoodAuth.Show("С успешной авторизацией, " + Environment.NewLine + $"{AppUser.GetName()}");
 
             void SetNullLogin()
             {
@@ -136,6 +135,7 @@ namespace VeterinaryClinic.MiniForms
                 Program.MainFormLink.goToAuthPage.Visible = false;
                 Program.MainFormLink.goToLogOut.Visible = true;
                 Program.MainFormLink.userPanel.Visible = true;
+                Program.MainFormLink.goToReg.Visible = false;
                 Program.MainFormLink.myNameLabel.Text = AppUser.GetName();
 
                 switch (AppUser.AccountType)
@@ -154,12 +154,6 @@ namespace VeterinaryClinic.MiniForms
             return Task.CompletedTask;
         }
 
-        private void KeyPressValidate(object sender, KeyPressEventArgs e)
-        {
-            if ((e.KeyChar >= 'A' && e.KeyChar <= 'Z') || (e.KeyChar >= 1 && e.KeyChar <= 31) || (e.KeyChar >= 'a' && e.KeyChar <= 'z') || (e.KeyChar >= '0' && e.KeyChar <= '9') || (e.KeyChar >= 33 && e.KeyChar <= 38) || (e.KeyChar >= 40 && e.KeyChar <= 126) || e.KeyChar == (char)Keys.Back) { }
-            else e.Handled = true;
-        }
-
         private void GoToCloseForm_Click(object sender, EventArgs e)
         {
             Close();
@@ -168,6 +162,18 @@ namespace VeterinaryClinic.MiniForms
         private void helperButton_Click(object sender, EventArgs e)
         {
             Helper.Open();
+        }
+
+        private void KeyPressValidate(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar >= '0' && e.KeyChar <= '9') || (e.KeyChar >= 'a' && e.KeyChar <= 'z') || (e.KeyChar >= 'A' && e.KeyChar <= 'Z') || e.KeyChar == '@' || e.KeyChar == '.' || e.KeyChar == '-' || e.KeyChar == '_' || (e.KeyChar >= 1 && e.KeyChar <= 31) || e.KeyChar == (char)Keys.Back) { }
+            else e.Handled = true;
+        }
+
+        private void passwordTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar >= 'A' && e.KeyChar <= 'Z') || (e.KeyChar >= 1 && e.KeyChar <= 31) || (e.KeyChar >= 'a' && e.KeyChar <= 'z') || (e.KeyChar >= '0' && e.KeyChar <= '9') || (e.KeyChar >= 33 && e.KeyChar <= 38) || (e.KeyChar >= 40 && e.KeyChar <= 126) || e.KeyChar == (char)Keys.Back) { }
+            else e.Handled = true;
         }
     }
 }

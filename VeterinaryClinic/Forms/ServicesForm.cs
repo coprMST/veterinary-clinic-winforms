@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Guna.UI2.WinForms;
 using VeterinaryClinic.MiniForms;
+using static System.String;
 
 namespace VeterinaryClinic.Forms
 {
@@ -124,6 +125,12 @@ namespace VeterinaryClinic.Forms
             if (e.KeyChar != (char) Keys.Enter) return;
 
             _nowPage = 1;
+            GoUpdateDataGrid();
+        }
+
+        private void goToClearSeacher_Click(object sender, EventArgs e)
+        {
+            seacher.Text = Empty;
             GoUpdateDataGrid();
         }
     }

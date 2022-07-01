@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using Guna.UI2.WinForms;
 using VeterinaryClinic.MiniForms;
+using static System.String;
 
 namespace VeterinaryClinic.Forms
 {
@@ -395,6 +396,12 @@ namespace VeterinaryClinic.Forms
                     OpenMiniForm.Shading(ref Program.MainFormLink, new AddPositionForm());
                     break;
             }
+        }
+
+        private void goToClearSeacher_Click(object sender, EventArgs e)
+        {
+            seacher.Text = Empty;
+            GoUpdateDataGrid();
         }
     }
 }
