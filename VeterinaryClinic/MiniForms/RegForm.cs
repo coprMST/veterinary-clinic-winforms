@@ -82,11 +82,7 @@ namespace VeterinaryClinic.MiniForms
             if (tempFio.Length == 3)
                 middleName = tempFio[2];
 
-            Data.Result result;
-            if (middleName == "NULL")
-                result = Data.ReturnDataTable($@"exec [dbo].[AddNewCustomer] '{lastName}', '{firstName}', NULL, '{dob}', '{phone}', '{email}', '{topPassword}'");
-            else
-                result = Data.ReturnDataTable($@"exec [dbo].[AddNewCustomer] '{lastName}', '{firstName}', '{middleName}', '{dob}', '{phone}', '{email}', '{topPassword}'");
+            var result = Data.ReturnDataTable(middleName == "NULL" ? $@"exec [dbo].[AddNewCustomer] '{lastName}', '{firstName}', NULL, '{dob}', '{phone}', '{email}', '{topPassword}'" : $@"exec [dbo].[AddNewCustomer] '{lastName}', '{firstName}', '{middleName}', '{dob}', '{phone}', '{email}', '{topPassword}'");
 
             if (result.HasError)
             {
@@ -111,6 +107,7 @@ namespace VeterinaryClinic.MiniForms
             Program.MainFormLink.userPanel.Visible = true;
             Program.MainFormLink.goToReg.Visible = false;
             Program.MainFormLink.myNameLabel.Text = AppUser.GetName();
+            Program.MainFormLink.goToMyPets.Visible = true;
             Program.MainFormLink.goToCreateMeeting.Visible = true;
 
             Close();

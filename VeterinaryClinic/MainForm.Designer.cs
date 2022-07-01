@@ -31,6 +31,7 @@ namespace VeterinaryClinic
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.menuPanel = new Guna.UI2.WinForms.Guna2Panel();
+            this.goToMyPets = new Guna.UI2.WinForms.Guna2Button();
             this.goToSettingsPage = new Guna.UI2.WinForms.Guna2Button();
             this.goToLogOut = new Guna.UI2.WinForms.Guna2Button();
             this.userPanel = new Guna.UI2.WinForms.Guna2Panel();
@@ -62,6 +63,7 @@ namespace VeterinaryClinic
             // menuPanel
             // 
             this.menuPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(116)))), ((int)(((byte)(144)))));
+            this.menuPanel.Controls.Add(this.goToMyPets);
             this.menuPanel.Controls.Add(this.goToSettingsPage);
             this.menuPanel.Controls.Add(this.goToLogOut);
             this.menuPanel.Controls.Add(this.userPanel);
@@ -78,6 +80,29 @@ namespace VeterinaryClinic
             this.menuPanel.Padding = new System.Windows.Forms.Padding(12);
             this.menuPanel.Size = new System.Drawing.Size(220, 768);
             this.menuPanel.TabIndex = 1;
+            // 
+            // goToMyPets
+            // 
+            this.goToMyPets.Animated = true;
+            this.goToMyPets.BorderRadius = 12;
+            this.goToMyPets.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
+            this.goToMyPets.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(94)))), ((int)(((byte)(117)))));
+            this.goToMyPets.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.goToMyPets.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.goToMyPets.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.goToMyPets.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.goToMyPets.Dock = System.Windows.Forms.DockStyle.Top;
+            this.goToMyPets.FillColor = System.Drawing.Color.Transparent;
+            this.goToMyPets.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
+            this.goToMyPets.ForeColor = System.Drawing.Color.White;
+            this.goToMyPets.Location = new System.Drawing.Point(12, 306);
+            this.goToMyPets.Name = "goToMyPets";
+            this.goToMyPets.Size = new System.Drawing.Size(196, 45);
+            this.goToMyPets.TabIndex = 43;
+            this.goToMyPets.Text = "Мои животные";
+            this.mainToolTip.SetToolTip(this.goToMyPets, "Переход на страницу данных");
+            this.goToMyPets.Visible = false;
+            this.goToMyPets.Click += new System.EventHandler(this.goToMyPets_Click);
             // 
             // goToSettingsPage
             // 
@@ -491,6 +516,7 @@ namespace VeterinaryClinic
         internal System.Windows.Forms.Label myNameLabel;
         internal Guna.UI2.WinForms.Guna2Button goToAuthPage;
         internal Guna.UI2.WinForms.Guna2Button goToReg;
+        internal Guna.UI2.WinForms.Guna2Button goToMyPets;
     }
 }
 

@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Guna.UI2.WinForms;
+using System;
 using System.Windows.Forms;
-using Guna.UI2.WinForms;
 using VeterinaryClinic.MiniForms;
 using static System.String;
 
@@ -59,7 +59,11 @@ namespace VeterinaryClinic.Forms
                         $@"select ST.ServiceTypeID, ServiceName, ServiceTypeName, FirstPrice, SecondPrice, ST.InArchive from Services S left join ServiceTypes ST on S.ServiceID = ST.ServiceID where ServiceName like '%{seacher.Text.Trim()}%' or ServiceTypeName like '%{seacher.Text.Trim()}%' ORDER BY S.ServiceName ASC OFFSET {_nowPage * AppUser.AmountRecordsInPage - AppUser.AmountRecordsInPage} ROWS FETCH NEXT {AppUser.AmountRecordsInPage} ROWS ONLY");
                     break;
             }
-            // S.InArchive = 0 and ST.InArchive = 0
+
+            if (result1 == null || result2 == null)
+            {
+                return;
+            }
 
             if (result1.HasError || result2.HasError)
             {
@@ -236,11 +240,16 @@ namespace VeterinaryClinic.Forms
 
             _amountPage = _amountRecord / AppUser.AmountRecordsInPage;
             if (Convert.ToDouble(_amountRecord % AppUser.AmountRecordsInPage) > 0)
+            {
                 _amountPage++;
+            }
 
             amountPagesComboBox.Items.Clear();
             for (var i = 0; i < _amountPage; i++)
+            {
                 amountPagesComboBox.Items.Add(i + 1);
+            }
+
             amountPagesComboBox.SelectedIndex = _nowPage - 1;
         }
 
@@ -252,7 +261,7 @@ namespace VeterinaryClinic.Forms
 
         private void UpdateMove(object sender, EventArgs e)
         {
-            var bt = (Guna2ImageButton) sender;
+            var bt = (Guna2ImageButton)sender;
 
             switch (bt.Name)
             {
@@ -262,7 +271,10 @@ namespace VeterinaryClinic.Forms
 
                 case "rightWarp":
                     if (_nowPage + 1 <= _amountPage)
+                    {
                         _nowPage += 1;
+                    }
+
                     break;
 
                 case "doubleLeftWarp":
@@ -271,7 +283,10 @@ namespace VeterinaryClinic.Forms
 
                 case "leftWarp":
                     if (_nowPage - 1 > 0)
+                    {
                         _nowPage -= 1;
+                    }
+
                     break;
             }
 
@@ -281,7 +296,9 @@ namespace VeterinaryClinic.Forms
         private void AmountPagesComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (_nowPage.ToString() == amountPagesComboBox.SelectedItem.ToString())
+            {
                 return;
+            }
 
             _nowPage = Convert.ToInt32(amountPagesComboBox.SelectedItem);
             GoUpdateDataGrid();
@@ -289,7 +306,10 @@ namespace VeterinaryClinic.Forms
 
         private void Seacher_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar != (char) Keys.Enter) return;
+            if (e.KeyChar != (char)Keys.Enter)
+            {
+                return;
+            }
 
             _nowPage = 1;
             GoUpdateDataGrid();
@@ -297,7 +317,7 @@ namespace VeterinaryClinic.Forms
 
         private void MovePage(object sender, EventArgs e)
         {
-            var bt = (Guna2Button) sender;
+            var bt = (Guna2Button)sender;
 
             switch (bt.Name)
             {
@@ -332,14 +352,16 @@ namespace VeterinaryClinic.Forms
 
                     var res = myMessageBoxQuestion.Show($@"Вы точно хотите удалить должность {name}?");
 
-                    if (res != DialogResult.Yes) return;
+                    if (res != DialogResult.Yes)
+                    {
+                        return;
+                    }
 
                     var result = Data.ReturnDataTable($@"delete from Positions where PositionID = '{id}'");
 
                     if (result.HasError && result.ErrorText != "Невозможно найти таблицу 0.")
                     {
-                        myMessageBoxError.Show($@"Не удалось удалить должность {name}." + Environment.NewLine +
-                                               result.ErrorText);
+                        myMessageBoxError.Show($@"Не удалось удалить должность {name}." + Environment.NewLine + result.ErrorText);
                         return;
                     }
 
@@ -359,7 +381,10 @@ namespace VeterinaryClinic.Forms
 
                     var res1 = myMessageBoxQuestion.Show($@"Вы точно хотите удалить сотрудника {name1}?");
 
-                    if (res1 != DialogResult.Yes) return;
+                    if (res1 != DialogResult.Yes)
+                    {
+                        return;
+                    }
 
                     var result1 = Data.ReturnDataTable($@"delete from Accounts where AccountID = '{id1}'");
 
@@ -383,22 +408,26 @@ namespace VeterinaryClinic.Forms
             {
                 case "Positions":
                     EditIndex = mainTable[0, mainTable.SelectedCells[0].RowIndex].Value.ToString();
-                    OpenMiniForm.Shading(ref Program.MainFormLink, new EditPosition());
+                    OpenMiniForm.Shading(new EditPosition());
                     break;
             }
+
+            GoUpdateDataGrid();
         }
 
-        private void goToAdd_Click(object sender, EventArgs e)
+        private void GoToAdd_Click(object sender, EventArgs e)
         {
             switch (_table)
             {
                 case "Positions":
-                    OpenMiniForm.Shading(ref Program.MainFormLink, new AddPositionForm());
+                    OpenMiniForm.Shading(new AddPositionForm());
                     break;
             }
+
+            GoUpdateDataGrid();
         }
 
-        private void goToClearSeacher_Click(object sender, EventArgs e)
+        private void GoToClearSeacher_Click(object sender, EventArgs e)
         {
             seacher.Text = Empty;
             GoUpdateDataGrid();

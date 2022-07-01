@@ -367,4 +367,36 @@
         AAAAAElFTkSuQmCC
 </value>
   </data>
+  <data name="cartImage.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAABGdBTUEAALGPC/xhBQAAA1BJREFUeF7t
+        nLmKVEEYhQe3xC1VcfcZxCVwQyMVX8FAfAAXEDQTXEJFcAk0dkw0EHdRfAYXTIwUXMElcAn0HJhAmnPH
+        e7vbmjo954MPmqbgr79u9/2r6lb3WAghhBBCCCGEEEIIIYQQQgghhBDqYQ48Dd/A35P4Ht6AO2AYIqeg
+        GvDJPA9nwjAEXkM1yP/yOAxDoN8L8AMug2FATkI1wG08BMOAsAjzIvTzTbgFQwHWQ3UBvsLZMPxnZsEv
+        UF0EXpxQAN5u1AU4AkMBONDqAqg68Aqqtm4uh9XQpQ5cgaqtk89gVXSpA3uhaufkGVgdbevASqjaObkL
+        Vsd0qQNc5c+D1TFd6sAjWCWjth4YhyqXo7BaRmU9wO30j1DlshZWS5c6UDProMrjE6z6WUeXOlAzx6DK
+        4yqsmlGpA4+hymEfrB73OjAf/oQqB65hqse9DuyGqv8voAXudeAsVP3n+xa41wF+0lXf+c2wwbUOrICq
+        37/gAmiDax3gLEf1m7MiK1zrAOf5qt9cF1jhWAdmQB6xVH3mytgOtzrAPR7V3+q3H5pwqwPc5VT9vQYt
+        casD3OdX/d0PLXGqA3Phd6j6ugra4lIH+IxX9fMltMalDvCUg+rnOWiNSx14DlU/90BrHOrAUqj6x+2H
+        hdCepjpQu0/gSHAYqgRr1277oQnuMDY9YapV3n6sp5+9nIAq0VrlT3NHCu6lXIAq2dq8DDl5GEm2w+vw
+        LVTJT5U8hHUT7oTThq3wEuQc/NuEfH0RboHDpGSs6lkDH0D1Sfzbe3DQQlgylgUb4QeoBkHJByQbYD+U
+        jGUBDzW9gyr5yeQg8pPchZKxbLgPVdJtfAi7UDKWBdugSraLbYtlyVg2cAaiEuVDkANw8YQHJ95TbbmO
+        aEPJWDY0nTbjIPTCP/lQbdv+NLRkLBu4/68SXQR74XuqLbe121Aylg1NzwR4K+hlCVRtP8M2lIxlQ25B
+        UwyX/CpRFkEOTJvCyP+ia0PJWDZwL0Yl2sVNsA0lY1lxF6pk23gbdqFkLBsG2R5YDbtQMpYV3OxqOoGs
+        5CD2e3qiZCwruO3b5hZxBw76q8SSsezYDLnk55SPiyf6FHIGMuwiWDJWCCGEEEIIIYQQQgghhDB1jI39
+        AXs5c7hpg9uWAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <metadata name="mainToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="myMessageBoxInfo.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>539, 18</value>
+  </metadata>
+  <metadata name="myMessageBoxQuestion.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>697, 18</value>
+  </metadata>
+  <metadata name="myMessageBoxError.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>883, 18</value>
+  </metadata>
 </root>

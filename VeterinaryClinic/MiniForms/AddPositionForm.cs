@@ -35,5 +35,10 @@ namespace VeterinaryClinic.MiniForms
             if ((e.KeyChar >= '1' && e.KeyChar <= '9') || e.KeyChar == ',' || e.KeyChar == (char)Keys.Back) { }
             else e.Handled = true;
         }
+
+        private void goToCloseForm_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

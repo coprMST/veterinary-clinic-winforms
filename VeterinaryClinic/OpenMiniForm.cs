@@ -1,4 +1,7 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
+using System.Reflection;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using VeterinaryClinic.Forms;
 
@@ -11,65 +14,35 @@ namespace VeterinaryClinic
         /// </summary>
         /// <param name="thisMainForm">Передача this</param>
         /// <param name="miniForm">Форма для отображения</param>
-        public static void Shading(ref MainForm thisMainForm, Form miniForm)
+        public static void Shading(Form miniForm)
         {
-            var bmp = new Bitmap(thisMainForm.ClientRectangle.Width, thisMainForm.ClientRectangle.Height);
+            var localThis = Program.MainFormLink;
+            var bmp = new Bitmap(localThis.ClientRectangle.Width, localThis.ClientRectangle.Height);
             using (var g = Graphics.FromImage(bmp))
             {
                 g.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceOver;
                 g.CopyFromScreen(
-                    thisMainForm.PointToScreen(new Point(0, 0)), 
-                    new Point(0, 0), thisMainForm.ClientRectangle.Size);
+                    localThis.PointToScreen(new Point(0, 0)), 
+                    new Point(0, 0), localThis.ClientRectangle.Size);
                 const double percent = 0.70;
                 var darken = Color.FromArgb((int)(255 * percent), Color.Black);
                 using (Brush brush = new SolidBrush(darken))
                 {
-                    g.FillRectangle(brush, thisMainForm.ClientRectangle);
+                    g.FillRectangle(brush, localThis.ClientRectangle);
                 }
             }
 
             using (var p = new Panel())
             {
                 p.Location = new Point(0, 0);
-                p.Size = thisMainForm.ClientRectangle.Size;
+                p.Size = localThis.ClientRectangle.Size;
                 p.BackgroundImage = bmp;
 
-                thisMainForm.Controls.Add(p);
+                localThis.Controls.Add(p);
                 p.BringToFront();
 
                 miniForm.StartPosition = FormStartPosition.CenterParent;
-                miniForm.ShowDialog(thisMainForm);
-            }
-        }
-
-        public static void Shading2(ref DataForm thisDataForm, Form miniForm)
-        {
-            var bmp = new Bitmap(thisDataForm.ClientRectangle.Width, thisDataForm.ClientRectangle.Height);
-            using (var g = Graphics.FromImage(bmp))
-            {
-                g.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceOver;
-                g.CopyFromScreen(
-                    thisDataForm.PointToScreen(new Point(0, 0)),
-                    new Point(0, 0), thisDataForm.ClientRectangle.Size);
-                const double percent = 0.70;
-                var darken = Color.FromArgb((int)(255 * percent), Color.Black);
-                using (Brush brush = new SolidBrush(darken))
-                {
-                    g.FillRectangle(brush, thisDataForm.ClientRectangle);
-                }
-            }
-
-            using (var p = new Panel())
-            {
-                p.Location = new Point(0, 0);
-                p.Size = thisDataForm.ClientRectangle.Size;
-                p.BackgroundImage = bmp;
-
-                thisDataForm.Controls.Add(p);
-                p.BringToFront();
-
-                miniForm.StartPosition = FormStartPosition.CenterParent;
-                miniForm.ShowDialog(thisDataForm);
+                miniForm.ShowDialog(localThis);
             }
         }
     }

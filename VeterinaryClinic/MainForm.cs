@@ -47,6 +47,7 @@ namespace VeterinaryClinic
             {
                 case "1":
                     goToCreateMeeting.Visible = true;
+                    goToMyPets.Visible = true;
                     break;
                 case "2":
                     goDataPage.Visible = true;
@@ -85,19 +86,25 @@ namespace VeterinaryClinic
         private void goToSettings_Click(object sender, EventArgs e)
         {
             Text = "Петан - Настройки";
-            OpenMiniForm.Shading(ref Program.MainFormLink, new SettingsForm());
+            OpenMiniForm.Shading(new SettingsForm());
         }
 
         private void goToReg_Click(object sender, EventArgs e)
         {
             Text = "Петан - Регистрация";
-            OpenMiniForm.Shading(ref Program.MainFormLink, new RegForm());
+            OpenMiniForm.Shading(new RegForm());
         }
 
         private void GoToAuth_Click(object sender, EventArgs e)
         {
             Text = "Петан - Авторизация";
-            OpenMiniForm.Shading(ref Program.MainFormLink, new AuthForm());
+            OpenMiniForm.Shading(new AuthForm());
+        }
+
+        private void goToMyPets_Click(object sender, EventArgs e)
+        {
+            Text = "Петан - Мои животные";
+            OpenChildForm(new MyPetsForm());
         }
 
         private void goToSerivcesPage_Click(object sender, EventArgs e)
@@ -158,13 +165,15 @@ namespace VeterinaryClinic
         private void goToLogOut_Click(object sender, EventArgs e)
         {
             goToAuthPage.Visible = true;
+            goToReg.Visible = true;
             goToLogOut.Visible = false;
             userPanel.Visible = false;
             AppUser.DeleteUserFile();
             AppUser.AccountType = null;
-
+            AppUser.AccountId = null;
             goToCreateMeeting.Visible = false;
             goDataPage.Visible = false;
+            goToMyPets.Visible = false;
 
             if (goToCreateMeeting.Checked || goDataPage.Checked)
             {

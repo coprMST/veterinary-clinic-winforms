@@ -142,6 +142,7 @@ namespace VeterinaryClinic.MiniForms
                 {
                     case "1":
                         Program.MainFormLink.goToCreateMeeting.Visible = true;
+                        Program.MainFormLink.goToMyPets.Visible = true;
                         break;
                     case "2":
                         Program.MainFormLink.goDataPage.Visible = true;

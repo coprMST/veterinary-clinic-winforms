@@ -33,8 +33,6 @@ values
 ('Администратор', '60000', 'Поддержание работы информационной системы')
 go
 
-insert into [dbo].[Positions] ([PositionName], [Salary], [Responsibilities]) values ('{positionNameTextBox.Text.Trim()}', '4', '{IsNullOrEmpty(salaryTextBox.Text.Trim())}')
-
 create table [dbo].[AccountTypes] (
 	[AccountTypeID] tinyint identity primary key,
 	[TypeName] varchar(64) unique not null,
@@ -89,6 +87,15 @@ create table [dbo].[Pets] (
 	[Gender] varchar(1) not null,
 	[Peculiarities] varchar(512) null,
 )
+go
+
+create procedure [dbo].[AddNewPet] (@accountId uniqueidentifier, @petName varchar(128), @peculiarities varchar(512), @gender varchar(1))
+as
+	declare @customerID uniqueidentifier
+	set @customerID = (select C.CustomerID from Accounts A left join Customers C on A.AccountID = C.AccountID where A.AccountID = @accountId)
+	
+	insert into [dbo].[Pets] ([CustomerID], [PetName], [Peculiarities], [Gender]) 
+	values (@customerID, @petName, @peculiarities, @gender)
 go
 
 create table [dbo].[Meetings] (
@@ -168,11 +175,32 @@ go
 
 create table [dbo].[Orders] (
 	[OrderID] uniqueidentifier primary key default newsequentialid(),
-	[Discount] decimal(9,8) check ([Discount] >= 0 and [Discount] <= 100) default 0 not null,
-	[EmployeeID] uniqueidentifier foreign key references [dbo].[Employees]([EmployeeID]) on delete no action on update cascade not null,
+	[Discount] decimal(9,2) check ([Discount] >= 0 and [Discount] <= 100) default 0 not null,
 	[LastPrice] decimal(19,2) check ([LastPrice] >= 0) not null,
 	[DateTime] integer default [dbo].[UNIX_TIMESTAMP](sysdatetime()) not null,
 )
+go
+
+create procedure [dbo].[AddNewOrder] (@lastPrice decimal(19,2))
+as
+	declare @IDs table(ID uniqueidentifier)
+	
+	set xact_abort on
+	begin tran
+	insert into [dbo].[Orders]([LastPrice])
+	output inserted.OrderID into @IDs
+	values (@lastPrice)
+	commit tran
+		
+	select ID from @IDs
+go
+
+create procedure [dbo].[GetOrders] (@petId uniqueidentifier)
+as
+	select S.ServiceName, LOO.Amount, O.LastPrice, O.DateTime
+	from ListOfOrders LOO left join Orders O on LOO.OrderID = O.OrderID 
+	left join Services S on LOO.ServiceID = S.ServiceID
+	where LOO.PetID = @petId
 go
 
 create table [dbo].[ListOfOrders] (
@@ -180,6 +208,7 @@ create table [dbo].[ListOfOrders] (
 	[ServiceID] integer foreign key references [dbo].[Services]([ServiceID]) on delete no action on update cascade not null,
 	[PetID] uniqueidentifier foreign key references [dbo].[Pets]([PetID]) on delete no action on update no action not null,
 	[Amount] integer not null,
+	primary key ([OrderID], [ServiceID])
 )
 go
 

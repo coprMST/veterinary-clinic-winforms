@@ -31,7 +31,6 @@ namespace VeterinaryClinic.MiniForms
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddPositionForm));
             this.label3 = new System.Windows.Forms.Label();
-            this.respTextBox = new Guna.UI2.WinForms.Guna2TextBox();
             this.goToAdd = new Guna.UI2.WinForms.Guna2Button();
             this.label1 = new System.Windows.Forms.Label();
             this.salaryTextBox = new Guna.UI2.WinForms.Guna2TextBox();
@@ -42,6 +41,7 @@ namespace VeterinaryClinic.MiniForms
             this.myMessageBoxInfo = new Guna.UI2.WinForms.Guna2MessageDialog();
             this.myMessageBoxQuestion = new Guna.UI2.WinForms.Guna2MessageDialog();
             this.myMessageBoxError = new Guna.UI2.WinForms.Guna2MessageDialog();
+            this.respTextBox = new Guna.UI2.WinForms.Guna2TextBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,36 +56,6 @@ namespace VeterinaryClinic.MiniForms
             this.label3.Size = new System.Drawing.Size(114, 19);
             this.label3.TabIndex = 113;
             this.label3.Text = "Обязанности";
-            // 
-            // respTextBox
-            // 
-            this.respTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.respTextBox.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(213)))), ((int)(((byte)(215)))));
-            this.respTextBox.BorderRadius = 8;
-            this.respTextBox.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.respTextBox.DefaultText = "";
-            this.respTextBox.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.respTextBox.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.respTextBox.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.respTextBox.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.respTextBox.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(116)))), ((int)(((byte)(144)))));
-            this.respTextBox.Font = new System.Drawing.Font("Arial", 14F);
-            this.respTextBox.ForeColor = System.Drawing.Color.Black;
-            this.respTextBox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(116)))), ((int)(((byte)(144)))));
-            this.respTextBox.IconLeftOffset = new System.Drawing.Point(6, 0);
-            this.respTextBox.IconLeftSize = new System.Drawing.Size(30, 30);
-            this.respTextBox.IconRightOffset = new System.Drawing.Point(12, 0);
-            this.respTextBox.IconRightSize = new System.Drawing.Size(26, 26);
-            this.respTextBox.Location = new System.Drawing.Point(52, 299);
-            this.respTextBox.Margin = new System.Windows.Forms.Padding(0);
-            this.respTextBox.MaxLength = 32;
-            this.respTextBox.Name = "respTextBox";
-            this.respTextBox.PasswordChar = '\0';
-            this.respTextBox.PlaceholderText = "";
-            this.respTextBox.SelectedText = "";
-            this.respTextBox.Size = new System.Drawing.Size(389, 51);
-            this.respTextBox.TabIndex = 112;
-            this.respTextBox.TextOffset = new System.Drawing.Point(4, 0);
             // 
             // goToAdd
             // 
@@ -144,7 +114,7 @@ namespace VeterinaryClinic.MiniForms
             this.salaryTextBox.MaxLength = 32;
             this.salaryTextBox.Name = "salaryTextBox";
             this.salaryTextBox.PasswordChar = '\0';
-            this.salaryTextBox.PlaceholderText = "";
+            this.salaryTextBox.PlaceholderText = "56400,00";
             this.salaryTextBox.SelectedText = "";
             this.salaryTextBox.Size = new System.Drawing.Size(389, 51);
             this.salaryTextBox.TabIndex = 109;
@@ -173,7 +143,7 @@ namespace VeterinaryClinic.MiniForms
             this.positionNameTextBox.MaxLength = 32;
             this.positionNameTextBox.Name = "positionNameTextBox";
             this.positionNameTextBox.PasswordChar = '\0';
-            this.positionNameTextBox.PlaceholderText = "";
+            this.positionNameTextBox.PlaceholderText = "Врач";
             this.positionNameTextBox.SelectedText = "";
             this.positionNameTextBox.Size = new System.Drawing.Size(389, 51);
             this.positionNameTextBox.TabIndex = 108;
@@ -223,6 +193,7 @@ namespace VeterinaryClinic.MiniForms
             this.goToCloseForm.Name = "goToCloseForm";
             this.goToCloseForm.Size = new System.Drawing.Size(50, 35);
             this.goToCloseForm.TabIndex = 24;
+            this.goToCloseForm.Click += new System.EventHandler(this.goToCloseForm_Click);
             // 
             // myMessageBoxInfo
             // 
@@ -251,6 +222,36 @@ namespace VeterinaryClinic.MiniForms
             this.myMessageBoxError.Style = Guna.UI2.WinForms.MessageDialogStyle.Dark;
             this.myMessageBoxError.Text = null;
             // 
+            // respTextBox
+            // 
+            this.respTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.respTextBox.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(213)))), ((int)(((byte)(215)))));
+            this.respTextBox.BorderRadius = 8;
+            this.respTextBox.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.respTextBox.DefaultText = "";
+            this.respTextBox.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.respTextBox.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.respTextBox.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.respTextBox.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.respTextBox.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(116)))), ((int)(((byte)(144)))));
+            this.respTextBox.Font = new System.Drawing.Font("Arial", 14F);
+            this.respTextBox.ForeColor = System.Drawing.Color.Black;
+            this.respTextBox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(116)))), ((int)(((byte)(144)))));
+            this.respTextBox.IconLeftOffset = new System.Drawing.Point(6, 0);
+            this.respTextBox.IconLeftSize = new System.Drawing.Size(30, 30);
+            this.respTextBox.IconRightOffset = new System.Drawing.Point(12, 0);
+            this.respTextBox.IconRightSize = new System.Drawing.Size(26, 26);
+            this.respTextBox.Location = new System.Drawing.Point(52, 299);
+            this.respTextBox.Margin = new System.Windows.Forms.Padding(0);
+            this.respTextBox.MaxLength = 32;
+            this.respTextBox.Name = "respTextBox";
+            this.respTextBox.PasswordChar = '\0';
+            this.respTextBox.PlaceholderText = "Лечение животных";
+            this.respTextBox.SelectedText = "";
+            this.respTextBox.Size = new System.Drawing.Size(389, 51);
+            this.respTextBox.TabIndex = 112;
+            this.respTextBox.TextOffset = new System.Drawing.Point(4, 0);
+            // 
             // AddPositionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -277,7 +278,6 @@ namespace VeterinaryClinic.MiniForms
         #endregion
 
         private System.Windows.Forms.Label label3;
-        private Guna.UI2.WinForms.Guna2TextBox respTextBox;
         private Guna.UI2.WinForms.Guna2Button goToAdd;
         private System.Windows.Forms.Label label1;
         private Guna.UI2.WinForms.Guna2TextBox salaryTextBox;
@@ -288,5 +288,6 @@ namespace VeterinaryClinic.MiniForms
         private Guna.UI2.WinForms.Guna2MessageDialog myMessageBoxInfo;
         private Guna.UI2.WinForms.Guna2MessageDialog myMessageBoxQuestion;
         private Guna.UI2.WinForms.Guna2MessageDialog myMessageBoxError;
+        private Guna.UI2.WinForms.Guna2TextBox respTextBox;
     }
 }
